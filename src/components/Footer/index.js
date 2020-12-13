@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>Copyright
-      <Link className="navbar-brand" to="/about">
+        <Link className="navbar-brand" to="/about">
           Cr3ative
         </Link>
         2021</p>
