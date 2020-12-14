@@ -19,11 +19,12 @@ import ProfileEditor from "./pages/ProfileEditor";
 function App() {
   return (
     <Router>
+      <Navbar />
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div>
-            <Navbar />
+
             <Wrapper>
               <Route exact path="/" component={Signup} />
               <Route exact path="/about" component={About} />

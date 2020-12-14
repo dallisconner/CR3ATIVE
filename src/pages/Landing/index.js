@@ -1,22 +1,47 @@
-import { Link } from "react-router-dom";
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
 import Container from "../../components/Container";
+import Col from "../../components/Col";
+import Row from "../../components/Row";
 import './index.css';
 
 function Landing() {
+
+    const handleSubmit = e => {
+        e.preventDefault();
+    };
+
     return (
-        <div className="Landing">
-            <p>
-                Page under construction!
-            </p>
-            <Container className="mt-4">
-                <p>Return to <span></span>
-                    <Link className="navbar-brand" to="/signup">
+        <div>
+            <form onSubmit={handleSubmit}>
+                <Container className="mt-3 px-5">
+                    <Row className="form-group">
+                        <Col size="4">
+                            <img class="card-img" alt="user thumbnail" src="https://s3.amazonaws.com/thumbnails.venngage.com/template/27cb6c5b-f905-489b-a8a6-7b8fc5429582.png"></img>
+                        </Col>
+
+                    </Row>
+                </Container>
+                <Container className="mt-4">
+                    <Col size="6">
+                        <p>What happens when artists collaborate?</p>
+                    </Col>
+                    <Col size="6">
+                        <p>Collaboration in art promotes each artist's work to help both parties to grow their supporters. Cr3ative is a mobile-first web application to promote art collaboration in all forms. Here at Cr3ative, we believe in the power of working together, we facilitate opportunities for artists to work and play together in meaningful ways. Whether you are launching a mission-driven program, designing a mural, or looking to collaborate on online artful installations, Cr3ative allows you to create exceptional works and exchange value with other artists. Come join us at Cr3ative and make a bigger impact by building your following and your network while doing what you love.</p>
+                    </Col>
+                </Container>
+                <Container className="mt-4">
+                    <button className="btn btn-success" type="submit">
+                        Login
+                    </button><span> </span>
+
+                    <button className="btn btn-success" type="submit">
                         Sign Up
-                    </Link>
-                </p>
-            </Container>
+                    </button>
+                </Container>
+            </form>
         </div>
     );
-}
+};
 
 export default Landing;

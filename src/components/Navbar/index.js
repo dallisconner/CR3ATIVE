@@ -13,7 +13,7 @@ function Navbar() {
       </p>
       <div>
         <ul className="navbar-nav">
-          {/* <li className="nav-item">
+          <li className="nav-item">
             <Link
               to="/"
               className={
@@ -24,15 +24,63 @@ function Navbar() {
             >
               Home
             </Link>
-          </li> */}
-          {/* <li className="nav-item">
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/login"
+              className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}
+            >
+              Login
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link
               to="/signup"
               className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}
             >
               Sign Up
             </Link>
-          </li> */}
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/dashboard"
+              className={window.location.pathname === "/dashboard" ? "nav-link active" : "nav-link"}
+            >
+              Dashboard
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/profile"
+              className={window.location.pathname === "/profile" ? "nav-link active" : "nav-link"}
+            >
+              Profile
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/profileeditor"
+              className={window.location.pathname === "/profileeditor" ? "nav-link active" : "nav-link"}
+            >
+              Profile Editor
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/collabinfo"
+              className={window.location.pathname === "/collabinfo" ? "nav-link active" : "nav-link"}
+            >
+              Collab Info
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/forum"
+              className={window.location.pathname === "/forum" ? "nav-link active" : "nav-link"}
+            >
+              Forum
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
