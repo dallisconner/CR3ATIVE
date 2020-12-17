@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import NavTabs from "./components/NavTabs"
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import logo from './logo.png';
@@ -20,6 +21,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <NavTabs />
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
