@@ -4,6 +4,7 @@ import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
 import './index.css';
+import Collab from "../../styles/Collab_Dia_Final.png";
 
 function Landing() {
 
@@ -17,7 +18,7 @@ function Landing() {
                 <Container className="mt-3 px-5">
                     <Row className="form-group">
                         <Col size="4">
-                            <img class="card-img" alt="user thumbnail" src="https://s3.amazonaws.com/thumbnails.venngage.com/template/27cb6c5b-f905-489b-a8a6-7b8fc5429582.png"></img>
+                            <img class="card-img" alt="user thumbnail" src={Collab}></img>
                         </Col>
 
                     </Row>
