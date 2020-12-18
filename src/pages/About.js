@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Container from "../../components/Container";
-import './index.css';
+import Container from "../components/Container";
+import '../styles/index.css';
 
-function NonUserProfiles() {
+function About() {
     return (
-        <div className="NonUserProfiles">
+        <div className="About">
             <p>
                 Page under construction!
             </p>
@@ -19,4 +19,4 @@ function NonUserProfiles() {
     );
 }
 
-export default NonUserProfiles;
+export default About;

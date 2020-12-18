@@ -1,8 +1,9 @@
 // import React, { useState } from "react";
-import Container from "../../components/Container";
-import Col from "../../components/Col";
-import Row from "../../components/Row";
+import Container from "../components/Container";
+import Col from "../components/Col";
+import Row from "../components/Row";
 // import { Link } from "react-router-dom";
+import '../styles/index.css';
 
 const Profile = () => {
 
