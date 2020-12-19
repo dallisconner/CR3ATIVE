@@ -10,8 +10,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-//create cr3ative database
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cr3ativedb", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/creativedb", {
     useNewUrlParser: true,
     useFindAndModify: false
 });
