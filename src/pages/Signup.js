@@ -76,10 +76,10 @@ const Signup = () => {
           </button>
         </Container>
         <Container className="mt-4">
-          <p>Return to <span></span>
+          <p>Already registered? Return to <span></span>
             <Link className="navbar-brand" to="/login">
               Login
-      </Link>
+            </Link>
           </p>
         </Container>
       </form>

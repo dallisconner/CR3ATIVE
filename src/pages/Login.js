@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import '../styles/index.css';
 
 const Login = () => {
@@ -48,13 +48,7 @@ const Login = () => {
                         Submit
           </button>
                 </Container>
-                <Container className="mt-4">
-                    <p>Return to <span></span>
-                        <Link className="navbar-brand" to="/login">
-                            Login
-      </Link>
-                    </p>
-                </Container>
+
             </form>
         </div>
     );

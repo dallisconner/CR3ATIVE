@@ -1,5 +1,5 @@
 // import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
@@ -32,13 +32,15 @@ function Landing() {
                     </Col>
                 </Container>
                 <Container className="mt-4">
-                    <button className="btn btn-success" type="submit">
+                    {/* change link colors to white text */}
+                    <Link
+                        to="/login">
                         Login
-                    </button><span> </span>
-
-                    <button className="btn btn-success" type="submit">
-                        Sign Up
-                    </button>
+                    </Link><span> </span>
+                    <Link
+                        to="/signup">
+                        Register
+                    </Link>
                 </Container>
             </form>
         </div>
