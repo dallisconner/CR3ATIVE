@@ -36,11 +36,6 @@ body {
   color: white;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 @keyframes bgfade {
   0% { background-color: rgb(125,0,0) }
   33% { background-color: rgb(85,0,125) }
