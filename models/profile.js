@@ -7,7 +7,7 @@ const profileSchema = new Schema({
     required: "Selecting a template is required."
   }
 });
-f
+
 const Profile = mongoose.model("Profile", profileSchema);
 
 module.exports = Profile;
