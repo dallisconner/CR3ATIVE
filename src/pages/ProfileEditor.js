@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import '../styles/index.css';
 
 function ProfileEditor() {
+    const [redirect, setRedirect] = useState(true);
     const [username, setUsername] = useState();
     const [profession, setProfession] = useState();
     const [description, setDescription] = useState();
@@ -19,6 +20,8 @@ function ProfileEditor() {
     };
 
     return (
+        // (redirect) ? <Redirect to="/"></Redirect> :
+
         <div>
             <div className="mt-4">
             </div>
