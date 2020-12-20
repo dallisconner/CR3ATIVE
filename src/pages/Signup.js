@@ -3,23 +3,42 @@ import { Link, Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
+import API from "../utils/API";
+import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 
 
 const Signup = () => {
-  const [fullname, setFullName] = useState();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-  const [confirmpassword, setConfirmPassword] = useState();
+  // const [name, setName] = useState();
+  // const [username, setUsername] = useState();
+  // const [password, setPassword] = useState();
+  // const [confirmpassword, setConfirmPassword] = useState();
   const [redirect, setRedirect] = useState(false);
+  const [formObject, setFormObject] = useState({});
 
-  const handleSubmit = e => {
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value })
+  };
+
+  const handleFormSubmit = e => {
     e.preventDefault();
-    console.log("full name is " + fullname);
-    console.log("username is " + username);
-    console.log("password is " + password);
-    console.log("confirmed password is " + confirmpassword);
-    setRedirect(true)
+    // console.log("name is " + name);
+    // console.log("username is " + username);
+    // console.log("password is " + password);
+    // console.log("confirmed password is " + confirmpassword);
+    if (formObject.name && formObject.username && formObject.password && formObject.email) {
+      API.saveProfile({
+        name: formObject.name,
+        username: formObject.username,
+        password: formObject.password,
+        age: formObject.age,
+        email: formObject.email,
+        phone: formObject.phone
+      })
+        .then(res => setRedirect(true))
+        .catch(err => console.log(err));
+    }
   };
 
   return (
@@ -29,55 +48,77 @@ const Signup = () => {
         <div className="mt-4">
         </div>
         <p>Enter your registration details</p>
-        <form onSubmit={handleSubmit}>
+        <form>
           <Container className="mt-3 px-5">
             <Row className="form-group">
               <Col size="12">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="Full Name"
-                  name="fullname"
-                  onChange={e => setFullName(e.target.value)}
+                <Input
+                  onChange={handleInputChange}
+                  name="name"
+                  placeholder="Name (required)"
                 />
               </Col>
             </Row>
             <Row className="form-group">
               <Col size="12">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="Username"
+                <Input
+                  onChange={handleInputChange}
                   name="username"
-                  onChange={e => setUsername(e.target.value)}
+                  placeholder="Username (required)"
                 />
               </Col>
             </Row>
             <Row className="form-group">
               <Col size="12">
-                <input
-                  className="form-control"
-                  type="password"
-                  placeholder="Password"
+                <Input
+                  onChange={handleInputChange}
                   name="password"
-                  onChange={e => setPassword(e.target.value)}
+                  placeholder="Password (required)"
                 />
               </Col>
             </Row>
             <Row className="form-group">
               <Col size="12">
-                <input
-                  className="form-control"
-                  type="password"
-                  placeholder="Confirm Password"
-                  name="confirmpassword"
-                  onChange={e => setConfirmPassword(e.target.value)}
+                <Input
+                  onChange={handleInputChange}
+                  name="age"
+                  placeholder="Age"
                 />
               </Col>
             </Row>
-            <button className="btn btn-success" type="submit">
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="email"
+                  placeholder="Email (required)"
+                />
+              </Col>
+            </Row>
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="phone"
+                  placeholder="Phone"
+                />
+              </Col>
+            </Row>
+            {/* <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="photo"
+                  placeholder="Photo"
+                />
+              </Col>
+            </Row> */}
+            <FormBtn
+              disabled={!(formObject.name && formObject.username && formObject.password && formObject.email)}
+              onClick={handleFormSubmit}
+            >
               Submit
-          </button>
+              </FormBtn>
           </Container>
           <Container className="mt-4">
             <p>Already registered? <span></span>
