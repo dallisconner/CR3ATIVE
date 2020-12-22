@@ -1,11 +1,16 @@
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import React, { useState } from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import '../styles/index.css';
 
 function CollabInfo() {
+    const [redirect, setRedirect] = useState(true);
+
     return (
+        // (redirect) ? <Redirect to="/"></Redirect> :
+
         <div className="CollabInfo">
             <Container className="mt-4">
                 <Row>

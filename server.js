@@ -16,7 +16,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/creativedb", {
 });
 
 require("./routes/APIroutes.js")(app);
-require("./routes/Htmlroutes.js")(app);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`)
