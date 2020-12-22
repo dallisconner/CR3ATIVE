@@ -7,5 +7,9 @@ export default {
 
     saveProfile: function (profileData) {
         return axios.post("/api/signup", profileData);
+    },
+
+    saveProfile: function (profileData) {
+        return axios.post("/api/profileeditor", profileData);
     }
 };
