@@ -13,6 +13,7 @@ function ProfileEditor() {
     // const [profession, setProfession] = useState();
     // const [description, setDescription] = useState();
     const [formObject, setFormObject] = useState({});
+    // const [formObject, setFormObject] = useState({ profession: '', description: '' });
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -34,13 +35,18 @@ function ProfileEditor() {
         }
     };
 
+
+
     const discardForm = e => {
+
         e.preventDefault();
-        console.log("test discardForm")
-        setFormObject({
-            profession: "",
-            description: ""
-        })
+        console.log("test discardForm");
+        // setFormObject({
+        //     ...formObject,
+        //     profession: "",
+        //     description: ""
+        // })
+        setFormObject({ profession: "", description: "" });
     };
 
     return (
@@ -100,8 +106,7 @@ function ProfileEditor() {
                     </FormBtn>
                     <FormBtn
                         // disabled={!(formObject.profession && formObject.description)}
-                        onClick={discardForm}
-                    >
+                        onClick={discardForm}                    >
                         Discard Changes
                     </FormBtn>
                 </Container>
