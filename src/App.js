@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import NavTabs from "./components/NavTabs"
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
-import logo from './logo.png';
 import './App.css';
 import NonUserProfiles from "./pages/NonUserProfiles";
 import Profile from "./pages/Profile";
@@ -24,7 +23,6 @@ function App() {
       <NavTabs />
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <div>
             <Wrapper>
               <Route exact path="/" component={Landing} />

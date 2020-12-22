@@ -36,6 +36,14 @@ body {
   color: white;
 }
 
+.card-img {
+  max-width: 100%;
+  height: auto;
+  padding: 10%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+
 @keyframes bgfade {
   0% { background-color: rgb(125,0,0) }
   33% { background-color: rgb(85,0,125) }
