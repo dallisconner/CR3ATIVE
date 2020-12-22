@@ -26,7 +26,6 @@ function App() {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div>
-
             <Wrapper>
               <Route exact path="/" component={Landing} />
               <Route exact path="/about" component={About} />

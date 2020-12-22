@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import '../styles/index.css';
 
 function NonUserProfiles() {
+    const [redirect, setRedirect] = useState(true);
+
     return (
+        // (redirect) ? <Redirect to="/"></Redirect> :
+
         <div className="NonUserProfiles">
             <p>
-                Page under construction!
+                Non-user Profiles Page under construction!
             </p>
             <Container className="mt-4">
                 <p>Return to <span></span>

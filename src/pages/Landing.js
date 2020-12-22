@@ -20,7 +20,6 @@ function Landing() {
                         <Col size="12">
                             <img class="card-img" alt="user thumbnail" src={Collab}></img>
                         </Col>
-
                     </Row>
                 </Container>
                 <Container className="mt-12">
@@ -39,7 +38,7 @@ function Landing() {
                     </Link><span> </span>
                     <Link
                         to="/signup">
-                        Register
+                        Sign Up
                     </Link>
                 </Container>
             </form>
