@@ -23,7 +23,8 @@ const userSchema = Schema(
     },
     email: {
       type: String,
-      trim: true
+      trim: true,
+      require: "Email is Required."
     },
     phone: {
       type: String
