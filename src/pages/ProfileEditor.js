@@ -9,11 +9,8 @@ import '../styles/index.css';
 
 function ProfileEditor() {
     const [redirect, setRedirect] = useState(false);
-    // const [username, setUsername] = useState();
-    // const [profession, setProfession] = useState();
-    // const [description, setDescription] = useState();
     const [formObject, setFormObject] = useState({});
-    // const [formObject, setFormObject] = useState({ profession: '', description: '' });
+
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -35,19 +32,12 @@ function ProfileEditor() {
         }
     };
 
-
-
     const discardForm = e => {
-
         e.preventDefault();
         console.log("test discardForm");
-        // setFormObject({
-        //     ...formObject,
-        //     profession: "",
-        //     description: ""
-        // })
-        setFormObject({ profession: "", description: "" });
+        document.getElementById("create-user-form").reset();
     };
+
 
     return (
         // (redirect) ? <Redirect to="/"></Redirect> :
@@ -56,21 +46,21 @@ function ProfileEditor() {
             <div className="mt-4">
             </div>
             <p>Hello ADD USERNAME FROM DATABASE please complete your profile</p>
-            <form>
+            <form id="create-user-form">
                 <Container className="mt-3 px-5">
                     <Row className="form-group">
                         <Col size="4">
                             <img class="card-img" alt="user thumbnail" src="_blank"></img>
                         </Col>
-                        <Col size="4">
-                            {/* <input
+                        {/* <Col size="4">
+                            <input
                                 className="form-control"
                                 type="text"
                                 placeholder="Username"
                                 name="username"
                                 onChange={e => setUsername(e.target.value)}
-                            /> */}
-                        </Col>
+                            />
+                        </Col> */}
                         <Col size="4">
                             <Input
                                 onChange={handleInputChange}
@@ -105,7 +95,6 @@ function ProfileEditor() {
                         Save Changes
                     </FormBtn>
                     <FormBtn
-                        // disabled={!(formObject.profession && formObject.description)}
                         onClick={discardForm}                    >
                         Discard Changes
                     </FormBtn>
