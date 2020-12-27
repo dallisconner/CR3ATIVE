@@ -30,7 +30,13 @@ const userSchema = Schema(
     },
     photo: {
       type: String
-    }
+    },
+    profiles: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
+      }
+    ]
   }
 );
 
