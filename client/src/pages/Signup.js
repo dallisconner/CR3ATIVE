@@ -1,89 +1,137 @@
 import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
-import { Link } from "react-router-dom";
+import API from "../utils/API";
+import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 
+
 const Signup = () => {
-  const [fullname, setFullName] = useState();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-  const [confirmpassword, setConfirmPassword] = useState();
+  // const [name, setName] = useState();
+  // const [username, setUsername] = useState();
+  // const [password, setPassword] = useState();
+  // const [confirmpassword, setConfirmPassword] = useState();
+  const [redirect, setRedirect] = useState(false);
+  const [formObject, setFormObject] = useState({});
 
-  const handleSubmit = e => {
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    console.log("test handleInputChange")
+    setFormObject({ ...formObject, [name]: value })
+  };
+
+  const handleFormSubmit = e => {
     e.preventDefault();
-    console.log("full name is " + fullname);
-    console.log("username is " + username);
-    console.log("password is " + password);
-    console.log("confirmed password is " + confirmpassword);
-
+    console.log("test handlformsubmit")
+    // console.log("name is " + name);
+    // console.log("username is " + username);
+    // console.log("password is " + password);
+    // console.log("confirmed password is " + confirmpassword);
+    if (formObject.name && formObject.username && formObject.password && formObject.email) {
+      console.log("test if statement")
+      API.saveProfile({
+        name: formObject.name,
+        username: formObject.username,
+        password: formObject.password,
+        age: formObject.age,
+        email: formObject.email,
+        phone: formObject.phone
+      })
+        .then(res => setRedirect(true))
+        .catch(err => console.log(err));
+    }
   };
 
   return (
-    <div>
-      <div className="mt-4">
-      </div>
-      <p>Enter your registration details</p>
-      <form onSubmit={handleSubmit}>
-        <Container className="mt-3 px-5">
-          <Row className="form-group">
-            <Col size="12">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Full Name"
-                name="fullname"
-                onChange={e => setFullName(e.target.value)}
-              />
-            </Col>
-          </Row>
-          <Row className="form-group">
-            <Col size="12">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Username"
-                name="username"
-                onChange={e => setUsername(e.target.value)}
-              />
-            </Col>
-          </Row>
-          <Row className="form-group">
-            <Col size="12">
-              <input
-                className="form-control"
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={e => setPassword(e.target.value)}
-              />
-            </Col>
-          </Row>
-          <Row className="form-group">
-            <Col size="12">
-              <input
-                className="form-control"
-                type="password"
-                placeholder="Confirm Password"
-                name="confirmpassword"
-                onChange={e => setConfirmPassword(e.target.value)}
-              />
-            </Col>
-          </Row>
-          <button className="btn btn-success" type="submit">
-            Submit
-          </button>
-        </Container>
-        <Container className="mt-4">
-          <p>Already registered? Return to <span></span>
-            <Link className="navbar-brand" to="/login">
-              Login
+    (redirect) ? <Redirect to="/ProfileEditor"></Redirect> :
+
+      <div>
+        <div className="mt-4">
+        </div>
+        <p>Enter your registration details</p>
+        <form>
+          <Container className="mt-3 px-5">
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="name"
+                  placeholder="Name (required)"
+                />
+              </Col>
+            </Row>
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="username"
+                  placeholder="Username (required)"
+                />
+              </Col>
+            </Row>
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="password"
+                  placeholder="Password (required)"
+                />
+              </Col>
+            </Row>
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="age"
+                  placeholder="Age"
+                />
+              </Col>
+            </Row>
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="email"
+                  placeholder="Email (required)"
+                />
+              </Col>
+            </Row>
+            <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="phone"
+                  placeholder="Phone"
+                />
+              </Col>
+            </Row>
+            {/* <Row className="form-group">
+              <Col size="12">
+                <Input
+                  onChange={handleInputChange}
+                  name="photo"
+                  placeholder="Photo"
+                />
+              </Col>
+            </Row> */}
+            <FormBtn
+              disabled={!(formObject.name && formObject.username && formObject.password && formObject.email)}
+              onClick={handleFormSubmit}
+            >
+              Submit
+              </FormBtn>
+          </Container>
+          <Container className="mt-4">
+            <p>Already registered? <span></span>
+              <Link className="navbar-brand" to="/login">
+                Login
             </Link>
-          </p>
-        </Container>
-      </form>
-    </div>
+            </p>
+          </Container>
+        </form>
+      </div>
   );
 };
 

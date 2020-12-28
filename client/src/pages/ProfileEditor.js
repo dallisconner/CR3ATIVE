@@ -1,35 +1,60 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import API from "../utils/API";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
+import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 
 function ProfileEditor() {
-    const [username, setUsername] = useState();
-    const [profession, setProfession] = useState();
-    const [description, setDescription] = useState();
+    const [redirect, setRedirect] = useState(false);
+    const [formObject, setFormObject] = useState({});
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        console.log("username is " + username);
-        console.log("profession is " + profession);
-        console.log("description is " + description);
 
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        console.log("test handleInputChange")
+        setFormObject({ ...formObject, [name]: value })
     };
 
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        console.log("test handlformsubmit")
+        if (formObject.profession && formObject.description) {
+            console.log("test if statement")
+            API.saveProfile({
+                profession: formObject.profession,
+                description: formObject.description
+            })
+                .then(res => setRedirect(true))
+                .catch(err => console.log(err));
+        }
+    };
+
+    const discardForm = e => {
+        e.preventDefault();
+        console.log("test discardForm");
+        document.getElementById("create-user-form").reset();
+    };
+
+    // Needed to add this to git push.
+
+
     return (
+        // (redirect) ? <Redirect to="/"></Redirect> :
+
         <div>
             <div className="mt-4">
             </div>
-            <p>Please create your profile</p>
-            <form onSubmit={handleSubmit}>
+            <p>Hello ADD USERNAME FROM DATABASE please complete your profile</p>
+            <form id="create-user-form">
                 <Container className="mt-3 px-5">
                     <Row className="form-group">
                         <Col size="4">
                             <img class="card-img" alt="user thumbnail" src="_blank"></img>
                         </Col>
-                        <Col size="4">
+                        {/* <Col size="4">
                             <input
                                 className="form-control"
                                 type="text"
@@ -37,25 +62,21 @@ function ProfileEditor() {
                                 name="username"
                                 onChange={e => setUsername(e.target.value)}
                             />
-                        </Col>
+                        </Col> */}
                         <Col size="4">
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder="Profession"
+                            <Input
+                                onChange={handleInputChange}
                                 name="profession"
-                                onChange={e => setProfession(e.target.value)}
+                                placeholder="Profession"
                             />
                         </Col>
                     </Row>
                     <Row className="form-group">
                         <Col size="12">
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder="Description"
+                            <Input
+                                onChange={handleInputChange}
                                 name="description"
-                                onChange={e => setDescription(e.target.value)}
+                                placeholder="Description"
                             />
                         </Col>
                     </Row>
@@ -69,13 +90,16 @@ function ProfileEditor() {
                     </Col>
                 </Container>
                 <Container className="mt-4">
-                    <button className="btn btn-success" type="submit">
+                    <FormBtn
+                        disabled={!(formObject.profession && formObject.description)}
+                        onClick={handleFormSubmit}
+                    >
                         Save Changes
-                    </button><span> </span>
-
-                    <button className="btn btn-success" type="submit">
+                    </FormBtn>
+                    <FormBtn
+                        onClick={discardForm}                    >
                         Discard Changes
-                    </button>
+                    </FormBtn>
                 </Container>
             </form>
         </div>

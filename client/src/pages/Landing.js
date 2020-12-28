@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
+import logo from '../styles/logo.png';
 import '../styles/index.css';
 import Collab from "../styles/Collab_Dia_Final.png";
 
@@ -20,9 +21,9 @@ function Landing() {
                         <Col size="12">
                             <img class="card-img" alt="user thumbnail" src={Collab}></img>
                         </Col>
-
                     </Row>
                 </Container>
+                <img src={logo} className="App-logo" alt="logo" />
                 <Container className="mt-12">
                     <Col size="12">
                         <p>What happens when artists collaborate?</p>
@@ -39,7 +40,7 @@ function Landing() {
                     </Link><span> </span>
                     <Link
                         to="/signup">
-                        Register
+                        Sign Up
                     </Link>
                 </Container>
             </form>
