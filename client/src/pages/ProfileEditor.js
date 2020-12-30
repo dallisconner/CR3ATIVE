@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import Container from "../components/Container";
 import Col from "../components/Col";
@@ -8,7 +8,7 @@ import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 
 function ProfileEditor() {
-    const [redirect, setRedirect] = useState(false);
+    // const [redirect, setRedirect] = useState(false);
     const [formObject, setFormObject] = useState({});
 
 
@@ -27,7 +27,8 @@ function ProfileEditor() {
                 profession: formObject.profession,
                 description: formObject.description
             })
-                .then(res => setRedirect(true))
+                // removed setRedirect(true) from line 31
+                .then(res => console.log("Success!"))
                 .catch(err => console.log(err));
         }
     };

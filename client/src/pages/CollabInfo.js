@@ -1,12 +1,15 @@
-import { Redirect } from "react-router-dom";
-import React, { useState } from "react";
+// (1) Code for redirects to be re-implemented following succesful backend connection.
+// this could will prevent users from accidentally navigating to a route that is not associated with their login.
+// import { Redirect } from "react-router-dom";
+// import React, { useState } from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import '../styles/index.css';
 
 function CollabInfo() {
-    const [redirect, setRedirect] = useState(true);
+
+    // const [redirect, setRedirect] = useState(true);
 
     return (
         // (redirect) ? <Redirect to="/"></Redirect> :
