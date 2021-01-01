@@ -6,6 +6,6 @@ export default {
     },
 
     saveProfile: function (profileData) {
-        return axios.post("/api/signup", profileData);
+        return axios.post("/api/user", profileData);
     }
 };
