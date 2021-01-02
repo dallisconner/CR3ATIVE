@@ -9,10 +9,6 @@ import '../styles/index.css';
 
 
 const Signup = () => {
-  // const [name, setName] = useState();
-  // const [username, setUsername] = useState();
-  // const [password, setPassword] = useState();
-  // const [confirmpassword, setConfirmPassword] = useState();
   const [redirect, setRedirect] = useState(false);
   const [formObject, setFormObject] = useState({});
 
@@ -25,12 +21,8 @@ const Signup = () => {
   const handleFormSubmit = e => {
     e.preventDefault();
     console.log("test handlformsubmit")
-    // console.log("name is " + name);
-    // console.log("username is " + username);
-    // console.log("password is " + password);
-    // console.log("confirmed password is " + confirmpassword);
     if (formObject.name && formObject.username && formObject.password && formObject.email) {
-      console.log("test if statement")
+      console.log("test if statement");
       API.saveProfile({
         name: formObject.name,
         username: formObject.username,
@@ -45,7 +37,7 @@ const Signup = () => {
   };
 
   return (
-    (redirect) ? <Redirect to="/ProfileEditor"></Redirect> :
+    (redirect) ? <Redirect to="/profile/editor"></Redirect> :
 
       <div>
         <div className="mt-4">

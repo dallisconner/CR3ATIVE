@@ -11,7 +11,6 @@ function ProfileEditor() {
     // const [redirect, setRedirect] = useState(false);
     const [formObject, setFormObject] = useState({});
 
-
     function handleInputChange(event) {
         const { name, value } = event.target;
         console.log("test handleInputChange")
@@ -27,7 +26,6 @@ function ProfileEditor() {
                 profession: formObject.profession,
                 description: formObject.description
             })
-                // removed setRedirect(true) from line 31
                 .then(res => console.log("Success!"))
                 .catch(err => console.log(err));
         }
@@ -38,9 +36,6 @@ function ProfileEditor() {
         console.log("test discardForm");
         document.getElementById("create-user-form").reset();
     };
-
-    // Needed to add this to git push.
-
 
     return (
         // (redirect) ? <Redirect to="/"></Redirect> :

@@ -4,8 +4,7 @@ export default {
     getUsers: function () {
         return axios.get("https://randomuser.me/api/?results=50&nat=us");
     },
-
     saveProfile: function (profileData) {
-        return axios.post("/api/user", profileData);
+        return axios.post("/api/users/", profileData);
     }
 };
