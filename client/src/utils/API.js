@@ -1,11 +1,16 @@
 import axios from "axios";
 
 export default {
+    // getUsers: function () {
+    //     return axios.get("https://randomuser.me/api/?results=50&nat=us");
+    // },
     getUsers: function () {
-        return axios.get("https://randomuser.me/api/?results=50&nat=us");
+        return axios.get("/api/users/");
     },
-
-    saveProfile: function (profileData) {
-        return axios.post("/api/signup", profileData);
-    }
+    saveUser: function (profileData) {
+        return axios.post("/api/users/", profileData);
+    },
+    getUser: function (id) {
+        return axios.get("/api/users/" + id);
+    },
 };

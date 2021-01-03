@@ -1,14 +1,28 @@
-// (1) See line 1 of Collabinfo.js for explanation.
 // import { Redirect } from "react-router-dom";
-// import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Container from "../components/Container";
+import API from "../utils/API";
 import Col from "../components/Col";
 import Row from "../components/Row";
+import { List, ListItem } from "../components/List";
 import '../styles/index.css';
 
 function Dashboard() {
     // const [redirect, setRedirect] = useState(true);
+    const [user, setUsers] = useState([]);
 
+    useEffect(() => {
+        loadUsers()
+    }, [])
+
+    function loadUsers() {
+        API.getUsers()
+            .then(res =>
+                setUsers(res.data)
+            )
+            .catch(err => console.log(err));
+    }
     return (
         // (redirect) ? <Redirect to="/"></Redirect> :
 
@@ -25,32 +39,21 @@ function Dashboard() {
             </Container>
             <Container className="mt-4">
                 <div>
-                    <ul className="navbar-nav">
-                        <li className=" ">
-                            Creator 1
-                        </li>
-                        <li className=" ">
-                            Creator 2
-                        </li>
-                        <li className=" ">
-                            Creator 3
-                        </li>
-                        <li className=" ">
-                            Creator 4
-                        </li>
-                        <li className=" ">
-                            Creator 5
-                        </li>
-                        <li className=" ">
-                            Creator 6
-                        </li>
-                        <li className=" ">
-                            Creator 7
-                        </li>
-                        <li className=" ">
-                            Creator 8
-                        </li>
-                    </ul>
+                    {user.length ? (
+                        <List>
+                            {user.map(users => (
+                                <ListItem key={users._id}>
+                                    <Link to={"/user/" + users._id}>
+                                        <strong>
+                                            {users.name} by {users.username}
+                                        </strong>
+                                    </Link>
+                                </ListItem>
+                            ))}
+                        </List>
+                    ) : (
+                            <h3>No Collaborations to Display</h3>
+                        )}
                 </div>
             </Container>
         </div>

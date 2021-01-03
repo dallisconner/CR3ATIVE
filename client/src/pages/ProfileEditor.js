@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-// import { Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import Container from "../components/Container";
 import Col from "../components/Col";
@@ -8,9 +8,9 @@ import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 
 function ProfileEditor() {
-    // const [redirect, setRedirect] = useState(false);
+    const [user, setUser] = useState([]);
+    const [redirect, setRedirect] = useState(false);
     const [formObject, setFormObject] = useState({});
-
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -18,17 +18,28 @@ function ProfileEditor() {
         setFormObject({ ...formObject, [name]: value })
     };
 
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    function loadUser() {
+        API.getUser()
+            .then(res =>
+                setUser(res.data)
+            )
+            .catch(err => console.log(err));
+    }
+
     const handleFormSubmit = e => {
         e.preventDefault();
         console.log("test handlformsubmit")
         if (formObject.profession && formObject.description) {
             console.log("test if statement")
-            API.saveProfile({
+            API.saveUser({
                 profession: formObject.profession,
                 description: formObject.description
             })
-                // removed setRedirect(true) from line 31
-                .then(res => console.log("Success!"))
+                .then(res => setRedirect(true))
                 .catch(err => console.log(err));
         }
     };
@@ -39,23 +50,20 @@ function ProfileEditor() {
         document.getElementById("create-user-form").reset();
     };
 
-    // Needed to add this to git push.
-
-
     return (
-        // (redirect) ? <Redirect to="/"></Redirect> :
+        (redirect) ? <Redirect to="/dashboard"></Redirect> :
 
-        <div>
-            <div className="mt-4">
-            </div>
-            <p>Hello ADD USERNAME FROM DATABASE please complete your profile</p>
-            <form id="create-user-form">
-                <Container className="mt-3 px-5">
-                    <Row className="form-group">
-                        <Col size="4">
-                            <img class="card-img" alt="user thumbnail" src="_blank"></img>
-                        </Col>
-                        {/* <Col size="4">
+            <div>
+                <div className="mt-4">
+                </div>
+                <p>Hello {user._id} please complete your profile</p>
+                <form id="create-user-form">
+                    <Container className="mt-3 px-5">
+                        <Row className="form-group">
+                            <Col size="4">
+                                <img class="card-img" alt="user thumbnail" src="_blank"></img>
+                            </Col>
+                            {/* <Col size="4">
                             <input
                                 className="form-control"
                                 type="text"
@@ -64,46 +72,46 @@ function ProfileEditor() {
                                 onChange={e => setUsername(e.target.value)}
                             />
                         </Col> */}
-                        <Col size="4">
-                            <Input
-                                onChange={handleInputChange}
-                                name="profession"
-                                placeholder="Profession"
-                            />
+                            <Col size="4">
+                                <Input
+                                    onChange={handleInputChange}
+                                    name="profession"
+                                    placeholder="Profession"
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="form-group">
+                            <Col size="12">
+                                <Input
+                                    onChange={handleInputChange}
+                                    name="description"
+                                    placeholder="Description"
+                                />
+                            </Col>
+                        </Row>
+                    </Container>
+                    <Container className="mt-4">
+                        <Col size="6">
+                            <p>Profile Template Previews</p>
                         </Col>
-                    </Row>
-                    <Row className="form-group">
-                        <Col size="12">
-                            <Input
-                                onChange={handleInputChange}
-                                name="description"
-                                placeholder="Description"
-                            />
+                        <Col size="6">
+                            <p>Profile Template Descriptions</p>
                         </Col>
-                    </Row>
-                </Container>
-                <Container className="mt-4">
-                    <Col size="6">
-                        <p>Profile Template Previews</p>
-                    </Col>
-                    <Col size="6">
-                        <p>Profile Template Descriptions</p>
-                    </Col>
-                </Container>
-                <Container className="mt-4">
-                    <FormBtn
-                        disabled={!(formObject.profession && formObject.description)}
-                        onClick={handleFormSubmit}
-                    >
-                        Save Changes
+                    </Container>
+                    <Container className="mt-4">
+                        <FormBtn
+                            disabled={!(formObject.profession && formObject.description)}
+                            onClick={handleFormSubmit}
+                        >
+                            Save Changes
                     </FormBtn>
-                    <FormBtn
-                        onClick={discardForm}                    >
-                        Discard Changes
+                        <FormBtn
+                            onClick={discardForm}                    >
+                            Discard Changes
                     </FormBtn>
-                </Container>
-            </form>
-        </div>
+                    </Container>
+                </form>
+            </div>
     );
 };
 
