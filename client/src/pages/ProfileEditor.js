@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import Container from "../components/Container";
@@ -8,6 +8,7 @@ import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 
 function ProfileEditor() {
+    const [user, setUser] = useState([]);
     const [redirect, setRedirect] = useState(false);
     const [formObject, setFormObject] = useState({});
 
@@ -17,12 +18,24 @@ function ProfileEditor() {
         setFormObject({ ...formObject, [name]: value })
     };
 
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    function loadUser() {
+        API.getUser()
+            .then(res =>
+                setUser(res.data)
+            )
+            .catch(err => console.log(err));
+    }
+
     const handleFormSubmit = e => {
         e.preventDefault();
         console.log("test handlformsubmit")
         if (formObject.profession && formObject.description) {
             console.log("test if statement")
-            API.saveProfile({
+            API.saveUser({
                 profession: formObject.profession,
                 description: formObject.description
             })
@@ -43,7 +56,7 @@ function ProfileEditor() {
             <div>
                 <div className="mt-4">
                 </div>
-                <p>Hello ADD USERNAME FROM DATABASE please complete your profile</p>
+                <p>Hello {user._id} please complete your profile</p>
                 <form id="create-user-form">
                     <Container className="mt-3 px-5">
                         <Row className="form-group">

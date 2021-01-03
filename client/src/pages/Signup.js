@@ -23,7 +23,7 @@ const Signup = () => {
     console.log("test handlformsubmit")
     if (formObject.name && formObject.username && formObject.password && formObject.email) {
       console.log("test if statement");
-      API.saveProfile({
+      API.saveUser({
         name: formObject.name,
         username: formObject.username,
         password: formObject.password,
