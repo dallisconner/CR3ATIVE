@@ -1,79 +1,128 @@
-// import React, { useRef } from "react";
-// import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Input, TextArea, FormBtn } from "../components/Form"
+import { List, ListItem } from "../components/List"
 import Container from "../components/Container";
 import Col from "../components/Col";
 import '../styles/index.css';
+import API from "../utils/API";
 
 function Forum() {
-    // const titleRef = useRef();
-    // const bodyRef = useRef();
-    // const authorRef = useRef();
-    // const [state, dispatch] = useRef();
+  const [comments, setComments] = useState([]);
+  const [formObject, setFormObject] = useState({
+    title: "",
+    body: "",
+    username: ""
+  })
 
-    const handleSubmit = e => {
-        // e.preventDefault();
-        // dispatch({ type: LOADING });
-        // API.savePost({
-        //     title: titleRef.current.value,
-        //     body: bodyRef.current.value,
-        //     author: authorRef.current.value
-        // })
-        //     .then(result => {
-        //         dispatch({
-        //             type: ADD_POST,
-        //             post: result.data
-        //         });
-        //     })
-        //     .catch(err => console.log(err));
+  useEffect(() => {
+    loadComments()
+  }, []);
 
-        // titleRef.current.value = "";
-        // bodyRef.current.value = "";
-    };
-    return (
-        <div>
-            <div className="jumbotron">
-            <img src="https://placehold.it/150x150" alt="Placeholder" class="img-thumbnail"></img>
-            </div>
-            <h1>Create a post</h1>
-            <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
-                <input className="form-control mb-5" placeholder="Title" />
-                <textarea className="form-control mb-5" placeholder="Body" />
-                <input className="form-control mb-5" placeholder="Username" />
-                <button className="btn btn-success mt-3 mb-5" type="submit">
-                    Post
-        </button>
-            </form>
-            <Container className="mt-4">
-                <Col size="6">
-                    <p>Forums Posts display here</p>
-                </Col>
-                <Col size="6">
-                    <ul className=" ">
-                        <li className="">
-                            Forum Post 1
-                        </li>
-                        <li className=" ">
-                            Forum Post 2
-                        </li>
-                        <li className=" ">
-                            Forum Post 3
-                        </li>
-                        <li className=" ">
-                            Forum Post 4
-                        </li>
-                        <li className=" ">
-                            Forum Post 5
-                        </li>
-                        <li className=" ">
-                            Forum Post 6
-                        </li>
-                    </ul>
-                </Col>
-            </Container>
-        </div>
-    );
+  function loadComments() {
+    API.getComments()
+      .then(res => setComments(res.data))
+      .catch(err => console.log(err))
+      console.log("call complete")
+
+  };
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({...formObject, [name]: value})
+  };
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    if(formObject.title && formObject.body) {
+      API.saveComments({
+        title: formObject.title,
+        body: formObject.body,
+        username: formObject.username
+      })
+        .then(() => setFormObject({
+          title: "",
+          body:"",
+          username: ""
+        }))
+        .then(() => loadComments())
+        .catch(err => console.log(err))
+    }
+  };
+  return (
+    <div>
+      <div className="jumbotron">
+        <img src="https://placehold.it/150x150" alt="Placeholder" class="img-thumbnail"></img>
+      </div>
+      <h1>Create a post</h1>
+      <form> onChange={handleInputChange} className="form-control mb-5"
+        <Input 
+        onChange={handleInputChange}
+        name="title"
+        placeholder="Title (required)"  
+        />
+        <TextArea 
+        onChange={handleInputChange}
+        name="body" 
+        placeholder="Body (required)"  
+        />
+        <Input 
+        onChange={handleInputChange} 
+        name="username" 
+        placeholder="Username (Optional)" 
+        />
+        <FormBtn 
+          disabled={!(formObject.title && formObject.body)}
+          onClick={handleFormSubmit}
+        >
+          Post
+        </FormBtn>
+      </form>
+      <Container className="mt-4">
+        <Col size="6">
+          <p>Display Forum Here</p>
+        </Col>
+        <Col size="6">
+          {comments.length ? (
+            <List>
+              {comments.map(comment => {
+                return(
+                  <ListItem key={comments._id}>
+                    <strong>
+                      {comments.title},
+                      {comments.body},
+                      {comments.username}
+                    </strong>
+                  </ListItem>
+                )
+              })}
+            </List>
+          ) : (
+            <h3>No Results to Display</h3>
+          )}
+        </Col>
+      </Container>
+    </div>
+  );
 }
 
 //required ref={titleRef}, required ref={bodyRef}, ref={authorRef}, disabled={state.loading}
 
 export default Forum;
+{/* <li className="">
+                Forum Post 1
+                          </li>
+              <li className=" ">
+                Forum Post 2
+                          </li>
+              <li className=" ">
+                Forum Post 3
+                          </li>
+              <li className=" ">
+                Forum Post 4
+                          </li>
+              <li className=" ">
+                Forum Post 5
+                          </li>
+              <li className=" ">
+                Forum Post 6
+                          </li> */}
