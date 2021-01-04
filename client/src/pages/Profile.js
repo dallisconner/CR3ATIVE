@@ -23,7 +23,7 @@ const Profile = () => {
                 Edit
             </a>
             </button>
-            <Col size="4">
+            <Col size="5">
                 <img class="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
             </Col>
             <form onSubmit={handleSubmit}>
