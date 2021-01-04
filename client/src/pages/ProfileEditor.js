@@ -56,7 +56,7 @@ function ProfileEditor() {
             <div>
                 <div className="mt-4">
                 </div>
-                <p>Hello {user._id} please complete your profile</p>
+                <p>Hello {user._id}! Please complete your profile:</p>
                 <form id="create-user-form">
                     <Container className="mt-3 px-5">
                         <Row className="form-group">
@@ -72,7 +72,7 @@ function ProfileEditor() {
                                 onChange={e => setUsername(e.target.value)}
                             />
                         </Col> */}
-                            <Col size="4">
+                            <Col size="5">
                                 <Input
                                     onChange={handleInputChange}
                                     name="profession"
