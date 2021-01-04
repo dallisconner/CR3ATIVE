@@ -1,5 +1,5 @@
 import { Redirect } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
