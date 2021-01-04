@@ -1,7 +1,6 @@
 // (1) See line 1 of Collabinfo.js for explanation.
 // import React, { useState } from "react";
 // import { Redirect } from "react-router-dom";
-import React, { useState, useEffect } from "react"
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
@@ -33,9 +32,10 @@ const Profile = () => {
         <div>
             <div className="mt-4">
             </div>
-            <button className="btn btn-success" type="submit">
+            <button className="btn btn-success" type="submit"> <a href="/profile/editor">
                 Edit
-          </button>
+            </a>
+            </button>
             <Col size="4">
                 <img class="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
             </Col>

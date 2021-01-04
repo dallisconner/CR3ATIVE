@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+// (1) See line 1 of Collabinfo.js for explanation
+// import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import '../styles/index.css';
 
 function NonUserProfiles() {
-    const [redirect, setRedirect] = useState(true);
+    // const [redirect, setRedirect] = useState(true);
 
     return (
         // (redirect) ? <Redirect to="/"></Redirect> :

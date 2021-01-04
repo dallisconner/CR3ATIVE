@@ -32,9 +32,9 @@ function App() {
               <Route exact path="/forum" component={Forum} />
               <Route exact path="/landing" component={Landing} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/nonuserprofiels" component={NonUserProfiles} />
+              <Route exact path="/nonuserprofiles" component={NonUserProfiles} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/profileeditor" component={ProfileEditor} />
+              <Route exact path="/profile/editor" component={ProfileEditor} />
               <Route exact path="/signup" component={Signup} />
             </Wrapper>
             <Footer />
