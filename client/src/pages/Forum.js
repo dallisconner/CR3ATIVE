@@ -32,11 +32,7 @@ function Forum() {
     return (
         <div>
             <div className="jumbotron">
-                <img
-                    className="img-fluid img-thumbnail"
-                    alt="DEFINE TYPE HERE"
-                    src="_blank"
-                />
+            <img src="https://placehold.it/150x150" alt="Placeholder" class="img-thumbnail"></img>
             </div>
             <h1>Create a post</h1>
             <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
