@@ -1,12 +1,27 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+// (1) See line 1 of Collabinfo.js for explanation.
+// import React, { useState } from "react";
+// import { Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react"
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import '../styles/index.css';
+import API from "../utils/API";
 
 const Profile = () => {
-    const [redirect, setRedirect] = useState(true);
+    // const [redirect, setRedirect] = useState(true);
+    const [user, setUser] = useState([]);
+
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    const loadUser = () => {
+        API.getUser()
+            .then(res => setUser(res.data))
+            .catch(err => console.log(err))
+    };
+
     const handleSubmit = e => {
         e.preventDefault();
 
