@@ -108,16 +108,17 @@ const Signup = () => {
                 />
               </Col>
             </Row> */}
+            <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
             <FormBtn
               disabled={!(formObject.name && formObject.username && formObject.password && formObject.email)}
               onClick={handleFormSubmit}>
-              Submit
-              </FormBtn>
+              Submit 
+            </FormBtn>
+            </div>
           </Container>
-          <tr></tr>
           <Container className="mt-4">
             <p>Already registered? <span></span>
-              <Link className="navbar-brand" to="/login" style={{ color: '#FFF' }}>
+              <Link className="navbar-brand" to="/login" style={{ color: '#FFF'}} >
                 Login
             </Link>
             </p>
