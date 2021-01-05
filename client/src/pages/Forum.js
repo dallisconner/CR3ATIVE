@@ -23,7 +23,6 @@ function Forum() {
       .then(res => setComments(res.data))
       .catch(err => console.log(err))
       console.log("call complete")
-
   };
 
   function handleInputChange(event) {
@@ -86,11 +85,11 @@ function Forum() {
             <List>
               {comments.map(comment => {
                 return(
-                  <ListItem key={comments._id}>
+                  <ListItem key={comment._id}>
                     <strong>
-                      {comments.title},
-                      {comments.body},
-                      {comments.username}
+                      {comment.title},
+                      {comment.body},
+                      {comment.username}
                     </strong>
                   </ListItem>
                 )

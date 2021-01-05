@@ -16,7 +16,7 @@ export default {
     getComments: function () {
         return axios.get("/api/forums")
     },
-    saveComments: function () {
-        return axios.post("/api/forums")
+    saveComments: function (commentData) {
+        return axios.post("/api/forums", commentData)
     }
 };
