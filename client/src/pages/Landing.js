@@ -19,7 +19,7 @@ function Landing() {
                 <Container className="mt-3 px-5">
                     <Row className="form-group">
                         <Col size="12">
-                            <img class="card-img" alt="user thumbnail" src={Collab}></img>
+                            <img className="card-img" alt="user thumbnail" src={Collab}></img>
                         </Col>
                     </Row>
                 </Container>
