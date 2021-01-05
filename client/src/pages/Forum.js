@@ -31,13 +31,6 @@ function Forum() {
     };
     return (
         <div>
-            <div className="jumbotron">
-                <img
-                    className="img-fluid img-thumbnail"
-                    alt="DEFINE TYPE HERE"
-                    src="_blank"
-                />
-            </div>
             <h1>Create a post</h1>
             <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
                 <input className="form-control mb-5" placeholder="Title" />
