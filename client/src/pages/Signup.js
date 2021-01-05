@@ -110,14 +110,14 @@ const Signup = () => {
             </Row> */}
             <FormBtn
               disabled={!(formObject.name && formObject.username && formObject.password && formObject.email)}
-              onClick={handleFormSubmit}
-            >
+              onClick={handleFormSubmit}>
               Submit
               </FormBtn>
           </Container>
+          <tr></tr>
           <Container className="mt-4">
             <p>Already registered? <span></span>
-              <Link className="navbar-brand" to="/login">
+              <Link className="navbar-brand" to="/login" style={{ color: '#FFF' }}>
                 Login
             </Link>
             </p>

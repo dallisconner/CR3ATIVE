@@ -35,11 +35,11 @@ function Landing() {
                 <Container className="mt-4">
                     {/* change link colors to white text */}
                     <Link
-                        to="/login">
+                        to="/login" style={{ color: '#FFF' }}>
                         Login
                     </Link><span> </span>
                     <Link
-                        to="/signup">
+                        to="/signup" style={{ color: '#FFF' }}>
                         Sign Up
                     </Link>
                 </Container>
