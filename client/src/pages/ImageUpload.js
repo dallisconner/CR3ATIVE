@@ -1,14 +1,18 @@
-import Images from '../components/Images'
+import React, { Component } from 'react'
+import Pictures from '../components/Pictures'
 import Buttons from '../components/Buttons'
-import React, { useState } from "react";
+// import { API_URL } from './config'
+const API_URL = 'http://localhost:8080';
 
-const API_URL = 'http://localhost:3000';
+export default class ImageUpload extends Component
+// const App = () => 
+{
 
-const ImageUpload = () => {
+    state = {
+        test_3: []
+    }
 
-    const [images, setImages] = useState([]);
-
-    const onChange = e => {
+    onChange = e => {
         const files = Array.from(e.target.files)
 
         const formData = new FormData()
@@ -22,14 +26,16 @@ const ImageUpload = () => {
             body: formData
         })
             .then(res => {
+                console.log("test API_URL")
                 if (!res.ok) {
                     throw res
                 }
                 return res.json()
             })
-            .then(images => {
-                setImages({
-                    images
+            .then(test_3 => {
+                console.log("test then test_1")
+                this.setState({
+                    test_3
                 })
             })
             .catch(err => {
@@ -39,11 +45,15 @@ const ImageUpload = () => {
             })
     }
 
-    return (
-        <div>
-            <Images images={images} />
-            <Buttons onChange={onChange} />
-        </div>
-    )
+    render() {
+        const { test_3 } = this.state
+
+        return (
+            <div>
+                <Pictures test_3={test_3} />
+                <Buttons onChange={this.onChange} />
+            </div>
+        )
+    }
 }
-export default ImageUpload;
+// export default Application;
