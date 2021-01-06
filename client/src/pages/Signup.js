@@ -31,7 +31,10 @@ const Signup = () => {
         email: formObject.email,
         phone: formObject.phone
       })
-        .then(res => setRedirect(true))
+        .then(res => {
+          sessionStorage.setItem("user", JSON.stringify(res.data))
+          setRedirect(true)}
+          )
         .catch(err => console.log(err));
     }
   };
