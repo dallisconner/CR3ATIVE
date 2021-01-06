@@ -13,9 +13,10 @@
 
 import React from 'react'
 
-function Images() {
+function Images(props) {
+
     return (
-        images.map((image, i) =>
+        props.images.map((image, i) =>
             <div key={i}>
                 <img
                     src={image.secure_url}

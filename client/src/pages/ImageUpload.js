@@ -1,4 +1,4 @@
-import Images from '..components/Images'
+import Images from '../components/Images'
 import Buttons from '../components/Buttons'
 import React, { useState } from "react";
 
