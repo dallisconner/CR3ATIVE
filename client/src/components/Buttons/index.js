@@ -4,7 +4,7 @@ export default props =>
     <div className='button'>
         <input type='file' id='single' onChange={props.onChange} />
     </div>
-
+console.log("test Buttons")
 // import React from 'react'
 
 // function Buttons(props) {

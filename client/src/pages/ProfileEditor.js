@@ -23,10 +23,13 @@ function ProfileEditor() {
   }, [])
 
   function loadUser() {
-    API.getUser()
-      .then(res =>
+    const sessionUser = JSON.parse(sessionStorage.getItem("user"))
+    console.log(sessionUser)
+    API.getUser(sessionUser._id)
+      .then(res =>{
+        console.log("getUser", res)
         setUser(res.data)
-      )
+      })
       .catch(err => console.log(err));
   }
 
@@ -36,6 +39,7 @@ function ProfileEditor() {
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
       API.saveUser({
+        // image: formObject.image,
         profession: formObject.profession,
         description: formObject.description
       })

@@ -1,15 +1,17 @@
 import React from 'react'
 
 export default props =>
+
     props.test_3.map((image, i) =>
-        <div key={i} className='fadein'>
+        < div key={i} className='fadein' >
             <img
                 src={image.secure_url}
                 alt=''
                 onError={() => props.onError(image.public_id)}
             />
-        </div>
+        </div >
     )
+console.log("test Images")
 
 // import React from 'react'
 

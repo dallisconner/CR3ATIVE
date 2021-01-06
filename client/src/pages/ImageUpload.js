@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Pictures from '../components/Pictures'
 import Buttons from '../components/Buttons'
-// import { API_URL } from './config'
-const API_URL = 'http://localhost:8080';
+const API_URL = 'http://localhost:3000';
 
 export default class ImageUpload extends Component
 // const App = () => 
