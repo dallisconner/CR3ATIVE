@@ -8,7 +8,7 @@ export default {
         return axios.get("/api/users");
     },
     saveUser: function (profileData) {
-        return axios.post("/api/users/", profileData);
+        return axios.post("/api/users", profileData);
     },
     getUser: function (id) {
         return axios.get("/api/users/" + id);

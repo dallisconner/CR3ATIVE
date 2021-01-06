@@ -32,7 +32,7 @@ const Profile = () => {
     <div>
       <div className="mt-4">
       </div>
-      <button className="btn btn-success" type="submit"> <a href="/profile/editor">
+      <button className="btn btn-success" type="submit"> <a href="/profile/editor"style={{ color: '#FFF' }}>
         Edit
             </a>
       </button>

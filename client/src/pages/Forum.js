@@ -48,9 +48,18 @@ function Forum() {
     }
   };
   return (
+<<<<<<< HEAD
     <div>
       <h1>Create a post</h1>
       <form className="col-12"> 
+=======
+    <div style={{ width: "100%" }}>
+      <div className="jumbotron">
+        <img src="https://placehold.it/150x150" alt="Placeholder" class="img-thumbnail"></img>
+      </div>
+      <h1>Create a post</h1>
+      <form className="col-12"> onChange={handleInputChange} className="form-control mb-5"
+>>>>>>> 020c14dec9caa62960d2d80471defc64852b3d98
         <Input 
         onChange={handleInputChange}
         name="title"

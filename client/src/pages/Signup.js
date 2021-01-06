@@ -31,7 +31,10 @@ const Signup = () => {
         email: formObject.email,
         phone: formObject.phone
       })
-        .then(res => setRedirect(true))
+        .then(res => {
+          sessionStorage.setItem("user", JSON.stringify(res.data))
+          setRedirect(true)}
+          )
         .catch(err => console.log(err));
     }
   };
@@ -108,16 +111,17 @@ const Signup = () => {
                 />
               </Col>
             </Row> */}
+            <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
             <FormBtn
               disabled={!(formObject.name && formObject.username && formObject.password && formObject.email)}
-              onClick={handleFormSubmit}
-            >
-              Submit
-              </FormBtn>
+              onClick={handleFormSubmit}>
+              Submit 
+            </FormBtn>
+            </div>
           </Container>
           <Container className="mt-4">
             <p>Already registered? <span></span>
-              <Link className="navbar-brand" to="/login">
+              <Link className="navbar-brand" to="/login" style={{ color: '#FFF'}} >
                 Login
             </Link>
             </p>
