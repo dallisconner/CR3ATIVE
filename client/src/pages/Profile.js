@@ -32,12 +32,12 @@ const Profile = () => {
     <div>
       <div className="mt-4">
       </div>
-      <button className="btn btn-success" type="submit"> <a href="/profile/editor" style={{ color: '#FFF' }}>
+      <button className="btn btn-success" type="submit"> <a href="/profile/editor"style={{ color: '#FFF' }}>
         Edit
             </a>
       </button>
       <Col size="4">
-        <img className="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
+        <img class="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
       </Col>
       <form onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">

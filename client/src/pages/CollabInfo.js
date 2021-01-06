@@ -18,13 +18,13 @@ function CollabInfo() {
             <Container className="mt-4">
                 <Row>
                     <Col size="4">
-                        <img className="card-img" alt="user thumbnail 1" src="_blank"></img>
+                        <img class="card-img" alt="user thumbnail 1" src="_blank"></img>
                     </Col>
                     <Col size="4">
-                        <img className="card-img" alt="user thumbnail 2" src="_blank"></img>
+                        <img class="card-img" alt="user thumbnail 2" src="_blank"></img>
                     </Col>
                     <Col size="4">
-                        <img className="card-img" alt="user thumbnail 3" src="_blank"></img>
+                        <img class="card-img" alt="user thumbnail 3" src="_blank"></img>
                     </Col>
                 </Row>
                 <Container className="mt-4">

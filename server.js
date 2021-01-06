@@ -1,15 +1,13 @@
 require('dotenv').config()
 const express = require("express");
-const cloudinary = require('cloudinary');
-const formData = require('express-form-data');
-const cors = require('cors');
+const cloudinary = require('cloudinary')
+const formData = require('express-form-data')
+const cors = require("cors")
 const mongoose = require("mongoose");
 const routes = require("./routes");
 
 const CLIENT_ORIGIN = 'http://localhost:3000'
 const app = express();
-
-const PORT = process.env.PORT || 3001;
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -21,17 +19,7 @@ app.use(cors({
     origin: CLIENT_ORIGIN
 }))
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.use(formData.parse())
-
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-} else {
-    app.use(express.static("public"));
-}
-
-app.use(routes);
 
 app.post('/image-upload', (req, res) => {
 
@@ -44,6 +32,19 @@ app.post('/image-upload', (req, res) => {
         .catch((err) => res.status(400).json(err))
 })
 
+const PORT = process.env.PORT || 3001;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+} else {
+    app.use(express.static("public"));
+}
+
+app.use(routes);
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/creativedb", {
     useNewUrlParser: true,
     useFindAndModify: false
@@ -52,3 +53,4 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/creativedb", {
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`)
 })
+// to create new commit

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Pictures from '../components/Pictures'
 import Buttons from '../components/Buttons'
-const API_URL = 'http://localhost:3000';
+// import { API_URL } from './config'
+const API_URL = 'http://localhost:3001';
 
 export default class ImageUpload extends Component
 // const App = () => 
@@ -39,7 +40,7 @@ export default class ImageUpload extends Component
             })
             .catch(err => {
                 err.json().then(e => {
-
+                    console.log("test catch error")
                 })
             })
     }
