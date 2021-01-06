@@ -10,7 +10,7 @@ function About() {
             </p>
             <Container className="mt-4">
                 <p>Return to <span></span>
-                    <Link className="navbar-brand" to="/signup">
+                    <Link className="navbar-brand" to="/signup" style={{ color: '#FFF' }}>
                         Sign Up
                     </Link>
                 </p>
