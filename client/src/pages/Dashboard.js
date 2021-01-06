@@ -17,10 +17,12 @@ function Dashboard() {
   }, [])
 
   function loadUsers() {
-    API.getUsers()
-      .then(res =>
+    const sessionUser = JSON.parse(sessionStorage.getItem("user"))
+    API.getUsers(sessionUser._id)
+      .then(res =>{
+        console.log("Dashboard", res)
         setUsers(res.data)
-      )
+      })
       .catch(err => console.log(err));
   }
   return (
@@ -46,6 +48,7 @@ function Dashboard() {
                   <Link to={"/user/" + users._id}>
                     <strong>
                       {users.name} by {users.username}
+                      {users.profession} {users.description}
                     </strong>
                   </Link>
                 </ListItem>

@@ -28,15 +28,15 @@ const userSchema = new Schema(
     phone: {
       type: String
     },
-    photo: {
+    image: {
       type: String
     },
-    profiles: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Profile"
-      }
-    ]
+    profession: {
+      type: String 
+    },
+    description: {
+      type: String 
+    }
   }
 );
 
