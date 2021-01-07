@@ -104,21 +104,3 @@ function Forum() {
 //required ref={titleRef}, required ref={bodyRef}, ref={authorRef}, disabled={state.loading}
 
 export default Forum;
-/* <li className="">
-                Forum Post 1
-                          </li>
-              <li className=" ">
-                Forum Post 2
-                          </li>
-              <li className=" ">
-                Forum Post 3
-                          </li>
-              <li className=" ">
-                Forum Post 4
-                          </li>
-              <li className=" ">
-                Forum Post 5
-                          </li>
-              <li className=" ">
-                Forum Post 6
-                          </li> */
