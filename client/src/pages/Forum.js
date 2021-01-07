@@ -48,12 +48,9 @@ function Forum() {
     }
   };
   return (
-    <div style={{ width: "100%" }}>
-      <div className="jumbotron">
-        <img src="https://placehold.it/150x150" alt="Placeholder" class="img-thumbnail"></img>
-      </div>
+    <div>
       <h1>Create a post</h1>
-      <form className="col-12"> onChange={handleInputChange} className="form-control mb-5"
+      <form className="col-12"> 
         <Input 
         onChange={handleInputChange}
         name="title"
@@ -107,7 +104,7 @@ function Forum() {
 //required ref={titleRef}, required ref={bodyRef}, ref={authorRef}, disabled={state.loading}
 
 export default Forum;
-{/* <li className="">
+/* <li className="">
                 Forum Post 1
                           </li>
               <li className=" ">
@@ -124,4 +121,4 @@ export default Forum;
                           </li>
               <li className=" ">
                 Forum Post 6
-                          </li> */}
+                          </li> */
