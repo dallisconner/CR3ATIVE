@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default props =>
-    props.test_3.map((image, i) =>
+    props.pics.map((image, i) =>
         <div key={i} className='fadein'>
             <img
                 src={image.secure_url}
