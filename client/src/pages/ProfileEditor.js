@@ -4,13 +4,49 @@ import API from "../utils/API";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
+import Pictures from '../components/Pictures'
+import Buttons from '../components/Buttons'
 import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
+const API_URL = 'http://localhost:3001';
 
 function ProfileEditor() {
+  const [pics, setPics] = useState([]);
   const [user, setUser] = useState([]);
   const [redirect, setRedirect] = useState(false);
   const [formObject, setFormObject] = useState({});
+
+  const onChange = e => {
+    const files = Array.from(e.target.files)
+
+    const formData = new FormData()
+
+    files.forEach((file, i) => {
+      formData.append(i, file)
+    })
+
+    fetch(`${API_URL}/image-upload`, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => {
+        console.log("test API_URL")
+        if (!res.ok) {
+          throw res
+        }
+        return res.json()
+      })
+      .then(pics => {
+        console.log("test then test_1")
+        console.log(pics)
+        setPics(pics)
+      })
+      .catch(err => {
+        err.json().then(e => {
+          console.log("test catch error")
+        })
+      })
+  }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -26,7 +62,7 @@ function ProfileEditor() {
     const sessionUser = JSON.parse(sessionStorage.getItem("user"))
     console.log(sessionUser)
     API.getUser(sessionUser._id)
-      .then(res =>{
+      .then(res => {
         console.log("getUser", res)
         setUser(res.data)
       })
@@ -64,8 +100,11 @@ function ProfileEditor() {
         <form id="create-user-form">
           <Container className="mt-3 px-5">
             <Row className="form-group">
-              <Col size="">
-                <img src="https://placehold.it/150x150" alt="Placeholder" class="img-thumbnail"></img>
+              <Col size="4">
+                <div>
+                  <Pictures pics={pics} />
+                  <Buttons onChange={onChange} />
+                </div>
               </Col>
               {/* <Col size="4">
                             <input
