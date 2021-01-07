@@ -41,7 +41,6 @@ const Signup = () => {
 
   return (
     (redirect) ? <Redirect to="/profile/editor"></Redirect> :
-
       <div>
         <div className="mt-4">
         </div>

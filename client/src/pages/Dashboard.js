@@ -1,6 +1,6 @@
 // import { Redirect } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import API from "../utils/API";
 import Col from "../components/Col";
@@ -17,13 +17,12 @@ function Dashboard() {
   }, [])
 
   function loadUsers() {
-    const sessionUser = JSON.parse(sessionStorage.getItem("user"))
-    API.getUsers(sessionUser._id)
-      .then(res =>{
-        console.log("Dashboard", res)
-        setUsers(res.data)
-      })
-      .catch(err => console.log(err));
+      API.getUsers()
+        .then(res =>{
+          console.log("Dashboard", res)
+          setUsers(res.data)
+        })
+        .catch(err => console.log(err));
   }
   return (
     // (redirect) ? <Redirect to="/"></Redirect> :
