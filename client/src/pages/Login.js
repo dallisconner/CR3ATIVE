@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
@@ -6,20 +7,18 @@ import Row from "../components/Row";
 import '../styles/index.css';
 
 const Login = () => {
+  const [isActive, setActive] = useState(false);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    setActive(true);
     console.log("username is " + username);
     console.log("password is " + password);
   };
-
-
-
-  return (
-    <div>
+  const loginComponent = () =>  
+    (<div className="" >
       <div className="mt-4">
       </div>
       <p>Please login to continue</p>
@@ -32,7 +31,7 @@ const Login = () => {
                 type="text"
                 placeholder="Username"
                 name="username"
-                onChange={e => setUsername(e.target.value)}
+                // onChange={e => setUsername(e.target.value)}
               />
             </Col>
           </Row>
@@ -43,18 +42,23 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
                 name="password"
-                onChange={e => setPassword(e.target.value)}
+                // onChange={e => setPassword(e.target.value)}
               />
             </Col>
           </Row>
           <button className="btn btn-success" type="submit">
-            Submit
+        Submit
           </button>
         </Container>
-
       </form>
-    </div>
-  );
-};
+    </div >)
+  const redirectComponent = () => (<Redirect to="/profile" />)
+
+  const DynamicComponent = !isActive ? loginComponent : redirectComponent
+  console.log(DynamicComponent)
+
+  return <DynamicComponent />
+}
+    
 
 export default Login;

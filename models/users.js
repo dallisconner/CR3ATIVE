@@ -28,9 +28,9 @@ const userSchema = new Schema(
     phone: {
       type: String
     },
-    image: {
-      type: String
-    },
+    // image: {
+    //   type: String
+    // },
     profession: {
       type: String 
     },
