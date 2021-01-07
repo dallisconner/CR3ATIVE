@@ -52,7 +52,7 @@ const Login = () => {
         </Container>
       </form>
     </div >)
-  const redirectComponent = () => (<Redirect to="/profile" />)
+  const redirectComponent = () => (<Redirect to="/dashboard" />)
 
   const DynamicComponent = !isActive ? loginComponent : redirectComponent
   console.log(DynamicComponent)

@@ -17,8 +17,7 @@ function Dashboard() {
   }, [])
 
   function loadUsers() {
-    const sessionUser = JSON.parse(sessionStorage.getItem("user")) 
-      API.getUsers(sessionUser._id)
+      API.getUsers()
         .then(res =>{
           console.log("Dashboard", res)
           setUsers(res.data)
