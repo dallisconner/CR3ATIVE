@@ -36,9 +36,11 @@ const Profile = () => {
         Edit
             </a>
       </button>
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
       <Col size="4">
         <img className="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
       </Col>
+      </div>
       <form onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
