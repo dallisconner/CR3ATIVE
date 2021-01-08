@@ -1,6 +1,6 @@
 // import { Redirect } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Container from "../components/Container";
 import API from "../utils/API";
 import Col from "../components/Col";
