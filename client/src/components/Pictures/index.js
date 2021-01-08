@@ -1,15 +1,14 @@
 import React from 'react'
 
-export default props =>
-    props.pics.map((image, i) =>
-        <div key={i} className='fadein'>
-            <img
-                src={image.secure_url}
-                alt=''
-                onError={() => props.onError(image.public_id)}
-            />
-        </div>
-    )
+export default props => (
+    <div className='fadein'>
+        <img
+            src={props.pics}
+            alt=''
+        />
+    </div>
+)
+
 
 // import React from 'react'
 

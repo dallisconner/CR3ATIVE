@@ -19,7 +19,7 @@ function Dashboard() {
   function loadUsers() {
     const sessionUser = JSON.parse(sessionStorage.getItem("user"))
     API.getUsers(sessionUser._id)
-      .then(res =>{
+      .then(res => {
         console.log("Dashboard", res)
         setUsers(res.data)
       })
@@ -41,19 +41,22 @@ function Dashboard() {
       </Container>
       <Container className="mt-4">
         <div>
+          <p>Available Collaborators</p>
           {user.length ? (
-            <List>
+            <Row>
               {user.map(users => (
-                <ListItem key={users._id}>
-                  <Link to={"/user/" + users._id}>
-                    <strong>
-                      {users.name} by {users.username}
-                      {users.profession} {users.description}
-                    </strong>
-                  </Link>
-                </ListItem>
+                // links to individual collaborators user_id. What is shown on their page?
+                // <ListItem key={users._id}>
+                // <Link to={"/user/" + users._id}>
+                <strong>
+
+                  <p>{users.name}, {users.username} {users.profession}. {users.description}</p>
+
+                </strong>
+                // </Link>
+                // </ListItem>
               ))}
-            </List>
+            </Row>
           ) : (
               <h3>No Collaborations to Display</h3>
             )}

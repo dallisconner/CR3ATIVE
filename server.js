@@ -5,6 +5,7 @@ const formData = require('express-form-data')
 const cors = require("cors")
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const db = require("./models");
 
 const CLIENT_ORIGIN = 'http://localhost:3000'
 const app = express();
@@ -21,14 +22,21 @@ app.use(cors({
 
 app.use(formData.parse())
 
-app.post('/image-upload', (req, res) => {
+app.post('/image-upload/:id', (req, res) => {
 
     const values = Object.values(req.files)
     const promises = values.map(image => cloudinary.uploader.upload(image.path))
 
     Promise
         .all(promises)
-        .then(results => res.json(results))
+        .then(results => {
+            const image = results[0].secure_url
+            db.User
+                .findOneAndUpdate({ _id: req.params.id }, { image })
+                .then(dbModel => {
+                    res.json(dbModel)
+                })
+        })
         .catch((err) => res.status(400).json(err))
 })
 

@@ -22,17 +22,17 @@ function Forum() {
     API.getComments()
       .then(res => setComments(res.data))
       .catch(err => console.log(err))
-      console.log("call complete")
+    console.log("call complete")
   };
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormObject({...formObject, [name]: value})
+    setFormObject({ ...formObject, [name]: value })
   };
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    if(formObject.title && formObject.body) {
+    if (formObject.title && formObject.body) {
       API.saveComments({
         title: formObject.title,
         body: formObject.body,
@@ -40,7 +40,7 @@ function Forum() {
       })
         .then(() => setFormObject({
           title: "",
-          body:"",
+          body: "",
           username: ""
         }))
         .then(() => loadComments())
@@ -50,23 +50,23 @@ function Forum() {
   return (
     <div>
       <h1>Create a post</h1>
-      <form className="col-12"> 
-        <Input 
-        onChange={handleInputChange}
-        name="title"
-        placeholder="Title (required)"  
+      <form className="col-12">
+        <Input
+          onChange={handleInputChange}
+          name="title"
+          placeholder="Title (required)"
         />
-        <TextArea 
-        onChange={handleInputChange}
-        name="body" 
-        placeholder="Body (required)"  
+        <TextArea
+          onChange={handleInputChange}
+          name="body"
+          placeholder="Body (required)"
         />
-        <Input 
-        onChange={handleInputChange} 
-        name="username" 
-        placeholder="Username (Optional)" 
+        <Input
+          onChange={handleInputChange}
+          name="username"
+          placeholder="Username (Optional)"
         />
-        <FormBtn 
+        <FormBtn
           disabled={!(formObject.title && formObject.body)}
           onClick={handleFormSubmit}
         >
@@ -81,7 +81,7 @@ function Forum() {
           {comments.length ? (
             <List>
               {comments.map(comment => {
-                return(
+                return (
                   <ListItem key={comment._id}>
                     <strong>
                       {comment.title},
@@ -93,32 +93,12 @@ function Forum() {
               })}
             </List>
           ) : (
-            <h3>No Results to Display</h3>
-          )}
+              <h3>No Results to Display</h3>
+            )}
         </Col>
       </Container>
     </div>
   );
 }
 
-//required ref={titleRef}, required ref={bodyRef}, ref={authorRef}, disabled={state.loading}
-
 export default Forum;
-/* <li className="">
-                Forum Post 1
-                          </li>
-              <li className=" ">
-                Forum Post 2
-                          </li>
-              <li className=" ">
-                Forum Post 3
-                          </li>
-              <li className=" ">
-                Forum Post 4
-                          </li>
-              <li className=" ">
-                Forum Post 5
-                          </li>
-              <li className=" ">
-                Forum Post 6
-                          </li> */
