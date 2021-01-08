@@ -12,6 +12,32 @@ body {
       monospace;
   }
 
-  
 
+.tristan {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 2px solid black;
   
+}
+
+.Dallis{
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.jesse{
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.allison{
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
