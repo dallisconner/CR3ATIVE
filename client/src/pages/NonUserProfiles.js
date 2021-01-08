@@ -17,8 +17,8 @@ function NonUserProfiles() {
             </p>
             <Container className="mt-4">
                 <p>Return to <span></span>
-                    <Link className="navbar-brand" to="/signup">
-                        Sign Up
+                    <Link className="navbar-brand" to="/dashboard">
+                        Dashboard
                     </Link>
                 </p>
             </Container>

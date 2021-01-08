@@ -50,6 +50,10 @@ a{
   padding-bottom: 0%;
 }
 
+.nav-item {
+  color : white;
+}
+
 @keyframes bgfade {
   0% { background-color: rgb(125,0,0) }
   33% { background-color: rgb(85,0,125) }
