@@ -46,8 +46,7 @@ function Dashboard() {
                 <ListItem key={users._id}>
                   <Link to={"/user/" + users._id}>
                     <strong>
-                      {users.name} by {users.username}
-                      {users.profession} {users.description}
+                      {users.name}{users.profession} {users.description}
                     </strong>
                   </Link>
                 </ListItem>

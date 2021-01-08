@@ -75,9 +75,6 @@ function Forum() {
       </form>
       <Container className="mt-4">
         <Col size="6">
-          <p>Display Forum Here</p>
-        </Col>
-        <Col size="6">
           {comments.length ? (
             <List>
               {comments.map(comment => {
