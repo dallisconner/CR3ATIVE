@@ -12,9 +12,10 @@ import allison from '../styles/allison.jpeg';
 function About() {
     return (
         <div className="About">
-            <p>
+            <h1>
                 Meet The CR3ATIVE Team:
-            </p>
+            </h1>
+            <br></br>
             <Container>
                 <Row>
                     <Col size="6">
@@ -42,18 +43,6 @@ function About() {
                 </Row>
             </Container>
 
-            <Container className="mt-4">
-                {/* change link colors to white text */}
-                <Link
-                    to="/login" style={{ color: '#FFF' }}>
-                    Login
-                    </Link><span> </span>
-
-                <Link
-                    to="/signup" style={{ color: '#FFF' }}>
-                    Sign Up
-                    </Link>
-            </Container>
         </div>
     );
 }
