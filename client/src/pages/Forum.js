@@ -48,9 +48,9 @@ function Forum() {
     }
   };
   return (
-    <div>
+    <Container className="mt-12">
       <h1>Create a post</h1>
-      <form className="col-12">
+      <form className="forum">
         <Input
           onChange={handleInputChange}
           name="title"
@@ -73,8 +73,9 @@ function Forum() {
           Post
         </FormBtn>
       </form>
-      <Container className="mt-4">
-        <Col size="6">
+      <br></br>
+      <Container className="mt-4 posts">
+        <Col size="12">
           {comments.length ? (
             <List>
               {comments.map(comment => {
@@ -94,7 +95,7 @@ function Forum() {
             )}
         </Col>
       </Container>
-    </div>
+    </Container>
   );
 }
 
