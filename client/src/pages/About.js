@@ -18,25 +18,25 @@ function About() {
             <Container>
                 <Row>
                     <Col size="6">
-                    <a target="_blank" href="https://github.com/teastman201">
-                        <img src={tristan} className="tristan" alt="tristan" /> </a>
+                        <a target="_blank" rel="noreferrer" href="https://github.com/teastman201">
+                            <img src={tristan} className="tristan" alt="tristan" /> </a>
                         <p> Tristan Eastman</p>
                     </Col>
                     <Col size="6">
-                        <a target="_blank" href="https://github.com/dallisconner">
+                        <a target="_blank" rel="noreferrer" href="https://github.com/dallisconner">
                             <img src={Dallis} className="Dallis" alt="Dallis" /> </a>
                         <p>Dallis Conner</p>
                     </Col>
                 </Row>
                 <Row>
                     <Col size="6">
-                    <a target="_blank" href="https://github.com/jesseziros">
-                        <img src={jesse} className="jesse" alt="jesse" /></a>
+                        <a target="_blank" rel="noreferrer" href="https://github.com/jesseziros">
+                            <img src={jesse} className="jesse" alt="jesse" /></a>
                         <p>Jesse Ziros</p>
                     </Col>
                     <Col size="6">
-                    <a target="_blank" href="https://github.com/haverab">
-                        <img src={allison} className="allison" alt="allison" /></a>
+                        <a target="_blank" rel="noreferrer" href="https://github.com/haverab">
+                            <img src={allison} className="allison" alt="allison" /></a>
                         <p>Allison Haver</p>
                     </Col>
                 </Row>
