@@ -41,3 +41,18 @@ body {
   border-radius: 50%;
   border: 2px solid black;
 }
+
+.outline{
+  background-color: gray;
+  border-radius: 6px;
+  border: 1px solid;
+  border-color: whitesmoke;
+  padding: 0.3em 1.0em;
+  text-align: center;
+  font-size: 20px;
+}
+
+.outline:hover{
+  background-color: transparent;
+  border-color: whitesmoke;
+}
