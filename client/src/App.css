@@ -34,10 +34,11 @@
 }
 
 .forum {
-  width:96vw;
+  width:90vw;
 }
 
 .posts {
+  width:90vw;
   align-items: center;
   justify-content: center;
 }
