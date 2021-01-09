@@ -20,9 +20,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: (req, res) => {
+    console.log("Hey inside server API");
+    console.log(req.body)
+    let { profession, description } =req.body
     db.User
-      .findOneAndUpdate({ _id: req.params.id })
+      .findOneAndUpdate({ _id: req.params.id }, { profession, description })
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(442).json(err));
   }
 };
