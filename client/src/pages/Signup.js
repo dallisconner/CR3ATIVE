@@ -33,8 +33,9 @@ const Signup = () => {
       })
         .then(res => {
           sessionStorage.setItem("user", JSON.stringify(res.data))
-          setRedirect(true)}
-          )
+          setRedirect(true)
+        }
+        )
         .catch(err => console.log(err));
     }
   };
@@ -44,6 +45,7 @@ const Signup = () => {
       <div>
         <div className="mt-4">
         </div>
+        {/* add comment */}
         <p>Enter your registration details</p>
         <form>
           <Container className="mt-3 px-5">
@@ -101,26 +103,17 @@ const Signup = () => {
                 />
               </Col>
             </Row>
-            {/* <Row className="form-group">
-              <Col size="12">
-                <Input
-                  onChange={handleInputChange}
-                  name="photo"
-                  placeholder="Photo"
-                />
-              </Col>
-            </Row> */}
-            <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-            <FormBtn
-              disabled={!(formObject.name && formObject.username && formObject.password && formObject.email)}
-              onClick={handleFormSubmit}>
-              Submit 
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <FormBtn
+                disabled={!(formObject.name && formObject.username && formObject.password && formObject.email)}
+                onClick={handleFormSubmit}>
+                Submit
             </FormBtn>
             </div>
           </Container>
           <Container className="mt-4">
             <p>Already registered? <span></span>
-              <Link className="navbar-brand" to="/login" style={{ color: '#FFF'}} >
+              <Link className="navbar-brand" to="/login" style={{ color: '#FFF' }} >
                 Login
             </Link>
             </p>

@@ -50,22 +50,18 @@ function Dashboard() {
       </Container>
       <Container className="mt-4">
         <div>
-          <p>Available Collaborators</p>
           {user.length ? (
-            <Row>
+            <List>
               {user.map(users => (
-                // links to individual collaborators user_id. What is shown on their page?
-                // <ListItem key={users._id}>
-                // <Link to={"/user/" + users._id}>
-                <strong>
-
-                  <p>{users.name}, {users.username} {users.profession}. {users.description}</p>
-
-                </strong>
-                // </Link>
-                // </ListItem>
+                <ListItem key={users._id}>
+                  <Link to={"/user/" + users._id}>
+                    <strong>
+                      {users.name}{users.profession} {users.description}
+                    </strong>
+                  </Link>
+                </ListItem>
               ))}
-            </Row>
+            </List>
           ) : (
               <h3>No Collaborations to Display</h3>
             )}
