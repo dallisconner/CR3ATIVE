@@ -37,7 +37,7 @@ function Landing() {
                     <Link
                         to="/login" style={{ color: '#FFF' }}>
                         Login
-                    </Link><span> </span>
+                    </Link><span> or </span>
                     <Link
                         to="/signup" style={{ color: '#FFF' }}>
                         Sign Up
