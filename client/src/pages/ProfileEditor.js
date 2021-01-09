@@ -76,7 +76,7 @@ function ProfileEditor() {
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
       API.saveUser({
-        // image: formObject.image,
+        image: formObject.image,
         profession: formObject.profession,
         description: formObject.description
       })
