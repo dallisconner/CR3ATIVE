@@ -76,7 +76,7 @@ function ProfileEditor() {
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
       API.saveUser({
-        // image: formObject.image,
+        image: formObject.image,
         profession: formObject.profession,
         description: formObject.description
       })
@@ -98,12 +98,15 @@ function ProfileEditor() {
         <div className="mt-4">
         </div>
         <p>Hello {user.name} please complete your profile</p>
+        <Col size="4">
+          <img className="card-img" alt="user thumbnail" src={user.image}></img>
+        </Col>
         <form id="create-user-form">
           <Container className="mt-3 px-5">
             <Row className="form-group">
               <Col size="4">
                 <div>
-                  <Pictures pics={pics} />
+                  {/* <Pictures pics={pics} /> */}
                   <Buttons onChange={onChange} />
                 </div>
               </Col>

@@ -30,7 +30,7 @@ app.post('/image-upload/:id', (req, res) => {
     Promise
         .all(promises)
         .then(results => {
-            // console.log(results)
+            console.log(results)
             const image = results[0].secure_url
             db.User
                 .findOneAndUpdate({ _id: req.params.id }, { image })
