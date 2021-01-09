@@ -45,6 +45,7 @@ const Signup = () => {
       <div>
         <div className="mt-4">
         </div>
+        {/* add comment */}
         <p>Enter your registration details</p>
         <form>
           <Container className="mt-3 px-5">
