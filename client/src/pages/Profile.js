@@ -5,6 +5,7 @@ import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import '../styles/index.css';
+import { List, ListItem } from "../components/List";
 import API from "../utils/API";
 
 const Profile = () => {
@@ -16,8 +17,12 @@ const Profile = () => {
   }, [])
 
   const loadUser = () => {
-    API.getUser()
-      .then(res => setUser(res.data))
+    const sessionUser = JSON.parse(sessionStorage.getItem("user"))
+    API.getUser(sessionUser._id)
+      .then(res => {
+        console.log("test Profile getUser")
+        setUser(res.data)
+      })
       .catch(err => console.log(err))
   };
 
@@ -32,7 +37,7 @@ const Profile = () => {
     <div>
       <div className="mt-4">
       </div>
-      <button className="btn btn-success" type="submit"> <a href="/profile/editor"style={{ color: '#FFF' }}>
+      <button className="btn btn-success" type="submit"> <a href="/profile/editor" style={{ color: '#FFF' }}>
         Edit
             </a>
       </button>
@@ -44,11 +49,33 @@ const Profile = () => {
           <Row className="form-group">
             <Col size="12">
               <p>User Information</p>
+              {/* add below as dynamic database call*/}
+              <p>name, email, age, profession, desription, image </p>
+              <div>
+                {user.length ? (
+                  <List>
+                    {user.map(users => (
+                      <ListItem key={users._id}>
+                        <strong>
+                          <p>{users.name}</p>
+                          <p>{users.email}</p>
+                          <p>{users.username}</p>
+                          <p>{users.profession}</p>
+                          <p>{users.description}</p>
+                        </strong>
+                      </ListItem>
+                    ))}
+                  </List>
+                ) : (
+                    <h3>No Collaborations to Display</h3>
+                  )}
+              </div>
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
               <p>User defined content</p>
+
             </Col>
           </Row>
 

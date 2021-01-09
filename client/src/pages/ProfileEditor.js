@@ -15,6 +15,7 @@ function ProfileEditor() {
   const [user, setUser] = useState([]);
   const [redirect, setRedirect] = useState(false);
   const [formObject, setFormObject] = useState({});
+  const sessionUser = JSON.parse(sessionStorage.getItem("user"))
 
   const onChange = e => {
     const files = Array.from(e.target.files)
@@ -25,7 +26,7 @@ function ProfileEditor() {
       formData.append(i, file)
     })
 
-    fetch(`${API_URL}/image-upload`, {
+    fetch(`${API_URL}/image-upload/${sessionUser._id}`, {
       method: 'POST',
       body: formData
     })
@@ -36,10 +37,10 @@ function ProfileEditor() {
         }
         return res.json()
       })
-      .then(pics => {
+      .then(user => {
         console.log("test then test_1")
-        console.log(pics)
-        setPics(pics)
+        console.log(user)
+        setPics(user.image)
       })
       .catch(err => {
         err.json().then(e => {
@@ -59,12 +60,12 @@ function ProfileEditor() {
   }, [])
 
   function loadUser() {
-    const sessionUser = JSON.parse(sessionStorage.getItem("user"))
     console.log(sessionUser)
     API.getUser(sessionUser._id)
       .then(res => {
         console.log("getUser", res)
         setUser(res.data)
+        setPics(res.data.image)
       })
       .catch(err => console.log(err));
   }
@@ -106,16 +107,7 @@ function ProfileEditor() {
                   <Buttons onChange={onChange} />
                 </div>
               </Col>
-              {/* <Col size="4">
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder="Username"
-                                name="username"
-                                onChange={e => setUsername(e.target.value)}
-                            />
-                        </Col> */}
-              <Col size="4">
+              <Col size="12">
                 <Input
                   onChange={handleInputChange}
                   name="profession"
@@ -132,14 +124,6 @@ function ProfileEditor() {
                 />
               </Col>
             </Row>
-          </Container>
-          <Container className="mt-4">
-            <Col size="6">
-              <p>Profile Template Previews</p>
-            </Col>
-            <Col size="6">
-              <p>Profile Template Descriptions</p>
-            </Col>
           </Container>
           <Container className="mt-4">
             <FormBtn
