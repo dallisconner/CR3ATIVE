@@ -15,7 +15,6 @@ import Dashboard from "./pages/Dashboard";
 import CollabInfo from "./pages/CollabInfo";
 import About from "./pages/About";
 import ProfileEditor from "./pages/ProfileEditor";
-import ImageUpload from "./pages/ImageUpload";
 
 function App() {
   return (
@@ -37,7 +36,6 @@ function App() {
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/profile/editor" component={ProfileEditor} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/imageupload" component={ImageUpload} />
             </Wrapper>
             <Footer />
           </div>
