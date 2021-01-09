@@ -82,7 +82,7 @@ function Forum() {
                 return (
                   <ListItem key={comment._id}>
                     <strong>
-                      "{comment.title}" by {comment.username}
+                      ⦿ "{comment.title}" by {comment.username}
                     </strong>
                     <br></br>
                     {comment.body}
