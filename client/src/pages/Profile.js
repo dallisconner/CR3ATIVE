@@ -41,44 +41,32 @@ const Profile = () => {
         Edit
             </a>
       </button>
-      <Col size="4">
-        <img className="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
-      </Col>
       <form onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
+            <Col size="">
+              <img className="card-img" alt="user thumbnail" src={user.image}></img>
+            </Col>
+          </Row>
+          <Row className="form-group">
             <Col size="12">
-              <p>User Information</p>
-              {/* add below as dynamic database call*/}
-              <p>name, email, age, profession, desription, image </p>
+              {/* <p>User Information</p> */}
               <div>
-                {user.length ? (
-                  <List>
-                    {user.map(users => (
-                      <ListItem key={users._id}>
-                        <strong>
-                          <p>{users.name}</p>
-                          <p>{users.email}</p>
-                          <p>{users.username}</p>
-                          <p>{users.profession}</p>
-                          <p>{users.description}</p>
-                        </strong>
-                      </ListItem>
-                    ))}
-                  </List>
-                ) : (
-                    <h3>No Collaborations to Display</h3>
-                  )}
+                <strong>
+                  <p>{user.name}</p>
+                  <p>{user.email}</p>
+                  <p>{user.username}</p>
+                  <p>{user.profession}</p>
+                  <p>{user.description}</p>
+                </strong>
               </div>
             </Col>
           </Row>
           <Row className="form-group">
             <Col size="12">
               <p>User defined content</p>
-
             </Col>
           </Row>
-
         </Container>
         <button className="btn btn-success" type="submit">
           Request Collab

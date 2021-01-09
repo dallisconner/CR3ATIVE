@@ -83,8 +83,8 @@ function Forum() {
                     <strong>
                       "{comment.title}" by {comment.username}
                     </strong>
-                      <br></br>
-                      {comment.body}
+                    <br></br>
+                    {comment.body}
                   </ListItem>
                 )
               })}
