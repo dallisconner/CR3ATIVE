@@ -81,10 +81,10 @@ function Forum() {
                 return (
                   <ListItem key={comment._id}>
                     <strong>
-                      {comment.title},
-                      {comment.body},
-                      {comment.username}
+                      "{comment.title}" by {comment.username}
                     </strong>
+                      <br></br>
+                      {comment.body}
                   </ListItem>
                 )
               })}
