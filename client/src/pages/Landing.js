@@ -29,14 +29,14 @@ function Landing() {
             </Container>
             <Container className="mt-4">
                 {/* change link colors to white text */}
-                <Link
-                    to="/login" style={{ color: '#FFF' }}>
+                <button className="outline" type="submit"> <a href="/login" style={{ color: '#FFF' }}>
                     Login
-                    </Link><span> or </span>
-                <Link
-                    to="/signup" style={{ color: '#FFF' }}>
+                    </a>
+                    </button><span> or </span>
+                    <button className="outline" type="submit"> <a href="/signup" style={{ color: '#FFF' }}>
                     Sign Up
-                    </Link>
+                    </a>
+                    </button>
             </Container>
         </div>
     );

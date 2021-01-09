@@ -37,7 +37,7 @@ const Profile = () => {
     <div>
       <div className="mt-4">
       </div>
-      <button className="btn btn-success" type="submit"> <a href="/profile/editor" style={{ color: '#FFF' }}>
+      <button className="outline" type="submit"> <a href="/profile/editor" style={{ color: '#FFF' }}>
         Edit
             </a>
       </button>
@@ -80,7 +80,7 @@ const Profile = () => {
           </Row>
 
         </Container>
-        <button className="btn btn-success" type="submit">
+        <button className="outline" type="submit" style={{ color: '#FFF'}} >
           Request Collab
           </button>
       </form>
