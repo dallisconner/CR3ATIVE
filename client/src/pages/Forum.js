@@ -44,13 +44,14 @@ function Forum() {
           username: ""
         }))
         .then(() => loadComments())
+        .then(document.getElementById("forum").reset())
         .catch(err => console.log(err))
     }
   };
   return (
     <Container className="mt-12">
       <h1>Create a post</h1>
-      <form className="forum">
+      <form className="forum" id="forum">
         <Input
           onChange={handleInputChange}
           name="title"
