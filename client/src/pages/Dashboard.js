@@ -36,7 +36,7 @@ function Dashboard() {
         <div>
           <p>Collab Showcase</p>
           <Row>
-            <Col size="4">
+          <Col size="4">
               <img className="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
             </Col>
             <Col size="4">
@@ -67,7 +67,7 @@ function Dashboard() {
             )}
         </div>
       </Container>
-    </div>
+    </div >
   );
 }
 

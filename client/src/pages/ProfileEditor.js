@@ -4,8 +4,8 @@ import API from "../utils/API";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
-import Pictures from '../components/Pictures'
-import Buttons from '../components/Buttons'
+import Pictures from '../components/Pictures';
+import Buttons from '../components/Buttons';
 import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 const API_URL = 'http://localhost:3001';
@@ -92,7 +92,7 @@ function ProfileEditor() {
   };
 
   return (
-    (redirect) ? <Redirect to="/dashboard"></Redirect> :
+    (redirect) ? <Redirect to="/profile"></Redirect> :
 
       <div>
         <div className="mt-4">

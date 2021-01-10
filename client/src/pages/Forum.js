@@ -3,6 +3,7 @@ import { Input, TextArea, FormBtn } from "../components/Form"
 import { List, ListItem } from "../components/List"
 import Container from "../components/Container";
 import Col from "../components/Col";
+import Row from "../components/Row";
 import '../styles/index.css';
 import API from "../utils/API";
 
@@ -77,14 +78,15 @@ function Forum() {
       <br></br>
       <Container className="mt-4 posts">
         <Col size="12">
+          <Row className="forum">
           {comments.length ? (
             <List>
               {comments.map(comment => {
                 return (
-                  <ListItem key={comment._id}>
-                    <strong>
-                      ⦿ "{comment.title}" by {comment.username}
-                    </strong>
+                    <ListItem key={comment._id}>
+                      <strong>
+                        ⦿ "{comment.title}" by {comment.username}
+                      </strong>
                     <br></br>
                     {comment.body}
                   </ListItem>
@@ -94,6 +96,7 @@ function Forum() {
           ) : (
               <h3>No Results to Display</h3>
             )}
+        </Row>
         </Col>
       </Container>
     </Container>
