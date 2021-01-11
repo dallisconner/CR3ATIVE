@@ -80,10 +80,15 @@ function ProfileEditor() {
   const handleFormSubmit = e => {
     e.preventDefault();
     console.log("test handleformsubmit")
+<<<<<<< HEAD
+
+=======
     const sessionUser = JSON.parse(sessionStorage.getItem("user"))
+>>>>>>> 75d5a975c4d23d5092d8cb8124e27d4a097ff1d3
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
-      API.saveUser({
+      API.updateUser({
+        id: sessionUser._id,
         image: formObject.image,
         profession: formObject.profession,
         description: formObject.description
