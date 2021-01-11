@@ -37,7 +37,27 @@ function Dashboard() {
           <p>Collab Showcase</p>
           <Row>
             <Col size="4">
-              <img className="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
+              <div>
+                <img className="card-img" alt="user thumbnail" src={user.image}></img>
+                <Row>
+                  <p>Name: {user.name}</p>
+                </Row>
+                <Row>
+                  <p>Email: {user.email}</p>
+                </Row>
+                <Row>
+                  <p>Description: {user.description}</p>
+                </Row>
+                <Row className="form-group">
+                  <Col size="12">
+                    <p>Want to Collab with {user.name}?</p>
+                  </Col>
+                  <button className="outline" type="submit" style={{ color: '#FFF'}} >
+          Request Collab
+          </button>
+                </Row>
+
+              </div>
             </Col>
             <Col size="4">
               <img className="card-img" alt="user thumbnail" src="https://e7.pngegg.com/pngimages/527/663/png-clipart-logo-person-user-person-icon-rectangle-photography-thumbnail.png"></img>
@@ -67,7 +87,7 @@ function Dashboard() {
             )}
         </div>
       </Container>
-    </div>
+    </div >
   );
 }
 
