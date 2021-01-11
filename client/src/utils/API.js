@@ -8,6 +8,7 @@ export default {
         return axios.get("/api/users");
     },
     saveUser: function (profileData) {
+        console.log(profileData)
         return axios.post("/api/users", profileData);
     },
     getUser: function (id) {
