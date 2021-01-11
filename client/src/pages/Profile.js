@@ -53,24 +53,26 @@ const Profile = () => {
               {/* <p>User Information</p> */}
               <div>
                 <strong>
-                  <p>{user.name}</p>
-                  <p>{user.email}</p>
-                  <p>{user.username}</p>
-                  <p>{user.profession}</p>
-                  <p>{user.description}</p>
+                  <Row>
+                  <p>Name: {user.name}</p>
+                  </Row>
+                  <Row>
+                  <p>Email: {user.email}</p>
+                  </Row>
+                  <Row>
+                  <p>Username: {user.username}</p>
+                  </Row>
+                  <Row>
+                  <p>Profession: {user.profession}</p>
+                  </Row>
+                  <Row>
+                  <p>Description: {user.description}</p>
+                  </Row>
                 </strong>
               </div>
             </Col>
           </Row>
-          <Row className="form-group">
-            <Col size="12">
-              <p>User defined content</p>
-            </Col>
-          </Row>
         </Container>
-        <button className="outline" type="submit" style={{ color: '#FFF'}} >
-          Request Collab
-          </button>
       </form>
     </div>
   );
