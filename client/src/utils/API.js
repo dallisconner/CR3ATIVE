@@ -13,6 +13,9 @@ export default {
     getUser: function (id) {
         return axios.get("/api/users/" + id);
     },
+    updateUser: function (profileData) {
+        return axios.put(`/api/users/${profileData.id}`, profileData)
+    },
     getComments: function () {
         return axios.get("/api/forums")
     },

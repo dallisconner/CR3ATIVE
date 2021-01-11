@@ -73,9 +73,11 @@ function ProfileEditor() {
   const handleFormSubmit = e => {
     e.preventDefault();
     console.log("test handleformsubmit")
+
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
-      API.saveUser({
+      API.updateUser({
+        id: sessionUser._id,
         image: formObject.image,
         profession: formObject.profession,
         description: formObject.description

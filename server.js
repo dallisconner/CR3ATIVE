@@ -10,6 +10,9 @@ const db = require("./models");
 const CLIENT_ORIGIN = 'http://localhost:3000'
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
@@ -43,8 +46,7 @@ app.post('/image-upload/:id', (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
