@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
@@ -15,9 +15,11 @@ import Dashboard from "./pages/Dashboard";
 import CollabInfo from "./pages/CollabInfo";
 import About from "./pages/About";
 import ProfileEditor from "./pages/ProfileEditor";
-import ImageUpload from "./pages/ImageUpload";
 
 function App() {
+
+  const user = sessionStorage.getItem("user");
+
   return (
     <Router>
       <Navbar />
@@ -26,18 +28,34 @@ function App() {
         <header className="App-header">
           <div>
             <Wrapper>
-              <Route exact path="/" component={Landing} />
+              <Route exact path="/" component={Landing}>
+                {user ? <Redirect to="/dashboard" /> : <Landing />} </Route>
+                
+              <Route exact path="/landing" component={Landing}>
+                {user ? <Redirect to="/dashboard" /> : <Landing />} </Route>
+
+              <Route exact path="/collabInfo" component={CollabInfo}>
+                {!user ? <Redirect to="/" /> : <CollabInfo />} </Route>
+
+              <Route exact path="/dashboard" component={Dashboard}>
+                {!user ? <Redirect to="/" /> : <Dashboard />} </Route>
+
+              <Route exact path="/forum" component={Forum}>
+                {!user ? <Redirect to="/" /> : <Forum />} </Route>
+
+              <Route exact path="/profile" component={Profile}>
+                {!user ? <Redirect to="/" /> : <Profile />} </Route>
+
+              <Route exact path="/profile/editor" component={ProfileEditor}>
+                {!user ? <Redirect to="/" /> : <ProfileEditor />} </Route>
+
               <Route exact path="/about" component={About} />
-              <Route exact path="/collabInfo" component={CollabInfo} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/forum" component={Forum} />
-              <Route exact path="/landing" component={Landing} />
+
               <Route exact path="/login" component={Login} />
-              <Route exact path="/nonuserprofiles" component={NonUserProfiles} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/profile/editor" component={ProfileEditor} />
+
+              <Route path="/user" component={NonUserProfiles} />
+
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/imageupload" component={ImageUpload} />
             </Wrapper>
             <Footer />
           </div>

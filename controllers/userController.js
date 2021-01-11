@@ -26,6 +26,7 @@ module.exports = {
     db.User
       .findOneAndUpdate({ _id: req.params.id }, { profession, description })
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(442).json(err));
-  }
+      .catch(err => res.status(422).json(err));
+  },
+
 };

@@ -4,8 +4,8 @@ import API from "../utils/API";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
-import Pictures from '../components/Pictures'
-import Buttons from '../components/Buttons'
+import Pictures from '../components/Pictures';
+import Buttons from '../components/Buttons';
 import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 const API_URL = 'http://localhost:3001';
@@ -15,6 +15,7 @@ function ProfileEditor() {
   const [user, setUser] = useState([]);
   const [redirect, setRedirect] = useState(false);
   const [formObject, setFormObject] = useState({});
+  const sessionUser = JSON.parse(sessionStorage.getItem("user"))
 
   const onChange = e => {
     const files = Array.from(e.target.files)
@@ -29,7 +30,7 @@ function ProfileEditor() {
       console.log(pic)
     })
 
-    fetch(`${API_URL}/image-upload/`, {
+    fetch(`${API_URL}/image-upload/${sessionUser._id}`, {
       method: 'POST',
       body: JSON.stringify(pic), 
       headers: {
@@ -43,10 +44,10 @@ function ProfileEditor() {
         }
         return res.json()
       })
-      .then(pics => {
+      .then(user => {
         console.log("test then test_1")
-        console.log(pics)
-        setPics(pics)
+        console.log(user)
+        setPics(user.image)
       })
       .catch(err => {
         err.json().then(e => {
@@ -66,12 +67,12 @@ function ProfileEditor() {
   }, [])
 
   function loadUser() {
-    const sessionUser = JSON.parse(sessionStorage.getItem("user"))
     console.log(sessionUser)
     API.getUser(sessionUser._id)
       .then(res => {
         console.log("getUser", res)
         setUser(res.data)
+        setPics(res.data.image)
       })
       .catch(err => console.log(err));
   }
@@ -82,8 +83,7 @@ function ProfileEditor() {
     const sessionUser = JSON.parse(sessionStorage.getItem("user"))
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
-      API.updateUser({
-        id: sessionUser._id,
+      API.saveUser({
         image: formObject.image,
         profession: formObject.profession,
         description: formObject.description
@@ -100,31 +100,25 @@ function ProfileEditor() {
   };
 
   return (
-    (redirect) ? <Redirect to="/dashboard"></Redirect> :
+    (redirect) ? <Redirect to="/profile"></Redirect> :
 
       <div>
         <div className="mt-4">
         </div>
         <p>Hello {user.name} please complete your profile</p>
+        <Col size="4">
+          <img className="card-img" alt="user thumbnail" src={user.image}></img>
+        </Col>
         <form id="create-user-form">
           <Container className="mt-3 px-5">
             <Row className="form-group">
               <Col size="4">
                 <div>
-                  <Pictures pics={pics} />
+                  {/* <Pictures pics={pics} /> */}
                   <Buttons onChange={onChange} />
                 </div>
               </Col>
-              {/* <Col size="4">
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder="Username"
-                                name="username"
-                                onChange={e => setUsername(e.target.value)}
-                            />
-                        </Col> */}
-              <Col size="4">
+              <Col size="12">
                 <Input
                   onChange={handleInputChange}
                   name="profession"
@@ -141,14 +135,6 @@ function ProfileEditor() {
                 />
               </Col>
             </Row>
-          </Container>
-          <Container className="mt-4">
-            <Col size="6">
-              <p>Profile Template Previews</p>
-            </Col>
-            <Col size="6">
-              <p>Profile Template Descriptions</p>
-            </Col>
           </Container>
           <Container className="mt-4">
             <FormBtn

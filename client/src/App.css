@@ -33,6 +33,16 @@
   color: #61dafb;
 }
 
+.forum {
+  width:90vw;
+}
+
+.posts {
+  width:90vw;
+  align-items: center;
+  justify-content: center;
+}
+
 body {
   background: linear-gradient(45deg, rgb(54, 54, 54),black);
   color: white;
@@ -48,6 +58,10 @@ a{
   padding: 10%;
   padding-top: 0%;
   padding-bottom: 0%;
+}
+
+.nav-item {
+  color : white;
 }
 
 @keyframes bgfade {
