@@ -72,15 +72,7 @@ const Profile = () => {
               </div>
             </Col>
           </Row>
-          <Row className="form-group">
-            <Col size="12">
-              <p>Want to Collab with {user.name}?</p>
-            </Col>
-          </Row>
         </Container>
-        <button className="outline" type="submit" style={{ color: '#FFF'}} >
-          Request Collab
-          </button>
       </form>
     </div>
   );
