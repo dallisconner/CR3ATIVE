@@ -8,10 +8,14 @@ export default {
         return axios.get("/api/users");
     },
     saveUser: function (profileData) {
+        console.log(profileData)
         return axios.post("/api/users", profileData);
     },
     getUser: function (id) {
         return axios.get("/api/users/" + id);
+    },
+    updateUser: function (profileData) {
+        return axios.put(`/api/users/${profileData.id}`, profileData)
     },
     getComments: function () {
         return axios.get("/api/forums")

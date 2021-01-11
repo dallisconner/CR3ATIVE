@@ -20,15 +20,22 @@ function ProfileEditor() {
   const onChange = e => {
     const files = Array.from(e.target.files)
 
-    const formData = new FormData()
+    const formData  = new FormData()
+    let pic = []
 
     files.forEach((file, i) => {
-      formData.append(i, file)
+      console.log(i, file.name)
+      formData.append(i, file.name)
+      pic = formData.getAll('0')
+      console.log(pic)
     })
 
     fetch(`${API_URL}/image-upload/${sessionUser._id}`, {
       method: 'POST',
-      body: formData
+      body: JSON.stringify(pic), 
+      headers: {
+        'Content-Type': 'application/json'      
+      }
     })
       .then(res => {
         console.log("test API_URL")
@@ -73,6 +80,7 @@ function ProfileEditor() {
   const handleFormSubmit = e => {
     e.preventDefault();
     console.log("test handleformsubmit")
+    const sessionUser = JSON.parse(sessionStorage.getItem("user"))
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
       API.saveUser({
