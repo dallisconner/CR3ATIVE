@@ -8,10 +8,7 @@ router.route("/")
 
 router.route("/:id")
     .get(userController.findById)
-    .put(userController.update);
-
-router.route("/:id")
-    // .get(userController.findById)
-    .put(userController.update);
+    // .put(userController.update);
+    .post(userController.update);
 
 module.exports = router;

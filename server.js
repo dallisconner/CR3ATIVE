@@ -23,7 +23,7 @@ app.use(cors({
     origin: CLIENT_ORIGIN
 }))
 
-app.use(formData.parse())
+// app.use(formData.parse())
 
 app.post('/image-upload/:id', (req, res) => {
 
@@ -45,7 +45,6 @@ app.post('/image-upload/:id', (req, res) => {
 })
 
 const PORT = process.env.PORT || 3001;
-
 
 
 if (process.env.NODE_ENV === "production") {
