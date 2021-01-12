@@ -4,8 +4,8 @@ import API from "../utils/API";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
-import Pictures from '../components/Pictures';
-import Buttons from '../components/Buttons';
+import Pictures from '../components/Pictures'
+import Buttons from '../components/Buttons'
 import { Input, FormBtn } from "../components/Form";
 import '../styles/index.css';
 const API_URL = 'http://localhost:3001';
@@ -21,21 +21,14 @@ function ProfileEditor() {
     const files = Array.from(e.target.files)
 
     const formData = new FormData()
-    let pic = []
 
     files.forEach((file, i) => {
-      console.log(i, file.name)
-      formData.append(i, file.name)
-      pic = formData.getAll('0')
-      console.log(pic)
+      formData.append(i, file)
     })
 
     fetch(`${API_URL}/image-upload/${sessionUser._id}`, {
       method: 'POST',
-      body: JSON.stringify(pic),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      body: formData
     })
       .then(res => {
         console.log("test API_URL")
@@ -80,6 +73,7 @@ function ProfileEditor() {
   const handleFormSubmit = e => {
     e.preventDefault();
     console.log("test handleformsubmit")
+
     if (formObject.profession && formObject.description) {
       console.log("test if statement")
       API.updateUser({
@@ -100,7 +94,7 @@ function ProfileEditor() {
   };
 
   return (
-    (redirect) ? <Redirect to="/profile"></Redirect> :
+    (redirect) ? <Redirect to="/dashboard"></Redirect> :
 
       <div>
         <div className="mt-4">
